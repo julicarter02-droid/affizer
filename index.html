@@ -3,303 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔴 [LIVE] Private Cam & Chat Room</title>
-    
-    <meta property="og:title" content="🔴 [LIVE] Private Cam & Chat Room" />
-    <meta property="og:description" content="She is waiting for you in the private chat room. Tap here to connect live! 💋 Only 2 VIP slots left." />
-    <meta property="og:image" content="https://raw.githubusercontent.com/mizan000321-ops/newv/main/GoWoZl9X0AA1I6V.jpg" />
-    <meta property="og:type" content="website" />
-
+    <title>🔴 PRIVATE ROOM | Restricted Access</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Ultra Premium Dark & Neon Theme */
-        :root {
-            --primary: #ff0055;
-            --primary-glow: rgba(255, 0, 85, 0.6);
-            --dark-bg: #090d16;
-            --card-bg: #111827;
-            --border: rgba(255, 0, 85, 0.2);
-            --text-muted: #94a3b8;
-            --neon-blue: #00f0ff;
-            --neon-green: #22c55e;
-            --gold: #facc15;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-
-        body { background-color: var(--dark-bg); color: #ffffff; padding-bottom: 40px; overflow-x: hidden; }
-
-        /* Top Navigation & Ticker */
-        .top-nav { display: flex; justify-content: space-between; align-items: center; padding: 12px 25px; background: rgba(17, 24, 39, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-        .live-indicator { display: flex; align-items: center; gap: 8px; font-weight: bold; color: var(--neon-green); font-size: 14px; }
-        .live-dot { width: 10px; height: 10px; background: var(--neon-green); border-radius: 50%; animation: blink 1s infinite; box-shadow: 0 0 10px var(--neon-green); }
-        .login-btn { background: transparent; color: white; border: 2px solid var(--primary); padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; transition: all 0.3s; text-transform: uppercase; font-size: 12px; animation: pulse-border 2s infinite; }
-        .login-btn:hover { background: var(--primary); box-shadow: 0 0 15px var(--primary-glow); }
-        @keyframes pulse-border { 0%, 100% { border-color: var(--primary); } 50% { border-color: transparent; } }
-
-        /* Header */
-        .header { text-align: center; padding: 40px 20px 25px; background: radial-gradient(circle at center, rgba(255, 0, 85, 0.15) 0%, transparent 70%); }
-        .profile-container { position: relative; width: 120px; height: 120px; margin: 0 auto 15px; }
-        .profile-img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--primary); object-fit: cover; box-shadow: 0 0 30px var(--primary-glow); }
-        .online-badge { position: absolute; bottom: 5px; right: 5px; background: var(--neon-green); padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 900; animation: blink 1.5s infinite; border: 2px solid var(--dark-bg); color: black; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-        h1 { font-size: 32px; font-weight: 900; margin-bottom: 10px; text-shadow: 0 2px 15px var(--primary-glow); letter-spacing: -0.5px; }
-        .sub-text { color: #cbd5e1; font-size: 16px; max-width: 650px; margin: 0 auto; line-height: 1.6; }
-
-        /* Main Layout */
-        .main-layout { display: flex; max-width: 1200px; margin: 30px auto; padding: 0 20px; gap: 30px; }
-        .left-content { flex: 1; display: flex; flex-direction: column; gap: 25px; }
-        .right-sidebar { width: 400px; flex-shrink: 0; }
-
-        /* Pending CTA Card */
-        .pending-card { background: linear-gradient(145deg, #111827, #0f131f); border: 2px solid var(--primary); border-radius: 20px; padding: 35px 30px; text-align: center; box-shadow: 0 10px 40px rgba(255, 0, 85, 0.2); position: relative; overflow: hidden; }
-        .pending-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent); transform: skewX(-25deg); animation: shine 3s infinite; }
-        @keyframes shine { 100% { left: 200%; } }
-        .pending-title { font-size: 26px; font-weight: 900; color: #fff; margin-bottom: 12px; text-transform: uppercase; }
-        .pending-title span { color: var(--primary); }
-        .pending-desc { font-size: 16px; color: #e2e8f0; line-height: 1.6; margin-bottom: 20px; }
-        .main-btn { display: block; width: 100%; background: linear-gradient(135deg, #ff0055 0%, #ff4d6d 100%); color: white; padding: 22px; border-radius: 30px; font-weight: 900; font-size: 18px; border: none; cursor: pointer; box-shadow: 0 8px 25px var(--primary-glow); text-transform: uppercase; animation: breathe 2s infinite; letter-spacing: 1px;}
-        @keyframes breathe { 0%, 100% { box-shadow: 0 8px 25px var(--primary-glow); } 50% { box-shadow: 0 8px 40px rgba(255, 0, 85, 0.8); transform: scale(1.02); } }
-
-        /* Video Vault */
-        .vault-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .vault-title { font-size: 20px; font-weight: 900; color: #fff; display: flex; align-items: center; gap: 8px; }
-        .gallery-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; }
-        .video-card { position: relative; border-radius: 12px; overflow: hidden; border: 2px solid rgba(255,255,255,0.1); cursor: pointer; transition: all 0.3s; background: #000; aspect-ratio: 16/9; }
-        .video-card.locked:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 5px 20px var(--primary-glow); }
-        .video-card.unlocked { border-color: var(--neon-green); cursor: default; }
-        .free-tag { position: absolute; top: 10px; left: 10px; background: var(--neon-green); color: black; font-weight: bold; font-size: 11px; padding: 4px 8px; border-radius: 5px; z-index: 5; }
-        .lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.6); z-index: 2; transition: background 0.3s; }
-        .video-card.locked:hover .lock-overlay { background: rgba(0,0,0,0.3); }
-        .lock-icon { font-size: 35px; margin-bottom: 5px; }
-        .unlock-text { font-size: 11px; font-weight: bold; background: var(--primary); padding: 4px 10px; border-radius: 8px; letter-spacing: 1px; }
-
-        /* Fake Comments Section */
-        .comments-wrapper { background: var(--card-bg); border-radius: 16px; padding: 25px; margin-top: 10px; border: 1px solid rgba(255,255,255,0.05); }
-        .comments-title { font-size: 18px; font-weight: 900; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; display: flex; justify-content: space-between;}
-        .comment-item { display: flex; gap: 15px; margin-bottom: 20px; }
-        .comment-avatar { width: 45px; height: 45px; border-radius: 50%; background: #334155; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px; flex-shrink: 0; }
-        .c-av-1 { background: #3b82f6; } .c-av-2 { background: #8b5cf6; } .c-av-3 { background: #ef4444; } .c-av-4 { background: #10b981; }
-        .comment-content { flex: 1; background: rgba(255,255,255,0.03); padding: 12px 15px; border-radius: 0 12px 12px 12px; }
-        .comment-header { display: flex; justify-content: space-between; margin-bottom: 5px; }
-        .comment-name { font-weight: bold; font-size: 14px; color: #fff; }
-        .comment-time { font-size: 12px; color: var(--text-muted); }
-        .comment-text { font-size: 14px; color: #cbd5e1; line-height: 1.4; }
-        .comment-actions { margin-top: 8px; font-size: 12px; color: var(--text-muted); display: flex; gap: 15px; font-weight: bold; cursor: pointer; }
-        .comment-actions span:hover { color: var(--primary); }
-
-        /* Interactive Live Chat Sidebar */
-        .live-chat-box { background: #0b111e; border: 1px solid var(--primary); border-radius: 16px; display: flex; flex-direction: column; height: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: sticky; top: 80px; }
-        .chat-header { background: var(--card-bg); padding: 15px 20px; font-size: 14px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); border-radius: 16px 16px 0 0; }
-        .viewer-count { color: #94a3b8; font-family: monospace; font-size: 15px; background: rgba(0,0,0,0.3); padding: 4px 10px; border-radius: 10px;}
-        .chat-feed { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 14px; scroll-behavior: smooth; }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
+        body { background: #000; color: #fff; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
         
-        .f-msg { font-size: 14px; line-height: 1.5; color: #cbd5e1; background: rgba(255,255,255,0.03); padding: 10px 14px; border-radius: 10px; width: fit-content; max-width: 90%; animation: popIn 0.3s ease-out; }
-        @keyframes popIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .f-user { font-weight: 900; margin-right: 6px; }
-        .c-1 { color: #38bdf8; } .c-2 { color: #a78bfa; } .c-3 { color: #34d399; }
+        /* Premium Glow & Glass Effects */
+        .glass-panel { background: rgba(20, 20, 25, 0.85); backdrop-filter: blur(15px); border: 1px solid rgba(255, 0, 85, 0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+        .neon-btn { background: linear-gradient(45deg, #ff0055, #ff00aa); box-shadow: 0 0 25px rgba(255, 0, 85, 0.6); transition: all 0.2s ease; }
+        .neon-btn:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(255, 0, 85, 0.9); }
         
-        .host-msg { background: rgba(255, 0, 85, 0.1); border-left: 4px solid var(--primary); }
-        .user-msg { background: rgba(0, 240, 255, 0.1); border-right: 4px solid var(--neon-blue); align-self: flex-end; text-align: right; }
+        /* Animations */
+        @keyframes pulse-red { 0%, 100% { background-color: #ff0055; box-shadow: 0 0 10px #ff0055; } 50% { background-color: #550011; box-shadow: 0 0 0px #ff0055; } }
+        .live-dot { height: 12px; width: 12px; border-radius: 50%; display: inline-block; animation: pulse-red 1s infinite; }
+        @keyframes loadingBar { 0% { width: 0%; } 100% { width: 99%; } }
+        .progress-fill { animation: loadingBar 3s ease-out forwards; }
         
-        .chat-input-area { padding: 15px; background: var(--card-bg); border-top: 1px solid rgba(255,255,255,0.05); border-radius: 0 0 16px 16px; display: flex; gap: 10px; }
-        .chat-input { flex: 1; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 14px 15px; border-radius: 25px; outline: none; font-size: 14px; transition: all 0.3s; }
-        .chat-input:focus { border-color: var(--primary); box-shadow: 0 0 10px rgba(255,0,85,0.2); }
-        .send-btn { background: var(--primary); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
-        .send-btn:hover { transform: scale(1.1); background: #ff3377; }
-
-        .typing-indicator { font-size: 12px; color: var(--primary); font-style: italic; display: flex; gap: 3px; align-items: center; }
-        .typing-indicator span { width: 4px; height: 4px; background: var(--primary); border-radius: 50%; animation: bounce 1.4s infinite ease-in-out both; }
-        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
-        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
-
-        @media (max-width: 900px) { .main-layout { flex-direction: column; } .right-sidebar { width: 100%; } }
+        /* Invisible Click Trap */
+        .click-trap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 40; cursor: pointer; }
+        
+        /* Chat scrollbar hide */
+        .chat-scroll::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-    <div class="top-nav">
-        <div class="live-indicator">
-            <div class="live-dot"></div>
-            LIVE PRIVATE ROOM
-        </div>
-        <button class="login-btn" onclick="goToCPA()">Create Account</button>
+    <div class="bg-red-600 text-white text-center py-2 text-xs md:text-sm font-black uppercase tracking-widest flex justify-center items-center gap-2 z-50 relative">
+        <span class="live-dot"></span> BROADCASTING LIVE: DO NOT REFRESH THE PAGE
     </div>
 
-    <div class="header">
-        <div class="profile-container">
-            <img src="https://raw.githubusercontent.com/mizan000321-ops/newv/main/GoWoZl9X0AA1I6V.jpg" alt="Live Host" class="profile-img">
-            <span class="online-badge">ONLINE NOW</span>
+    <div class="max-w-7xl mx-auto p-4 mt-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <div class="lg:col-span-2 space-y-6">
+            
+            <div class="relative rounded-2xl overflow-hidden glass-panel aspect-video ring-2 ring-red-600/50" id="videoWrapper">
+                <iframe src="https://drive.google.com/file/d/1eg9qondGDgK7sMykBrr04JIP6o67WZlC/preview" class="w-full h-full pointer-events-none" frameborder="0"></iframe>
+                
+                <div id="loadingOverlay" class="absolute inset-0 bg-black/90 flex flex-col items-center justify-center z-30 transition-opacity duration-500">
+                    <img src="https://raw.githubusercontent.com/mizan000321-ops/newv/main/GoWoZl9X0AA1I6V.jpg" class="w-20 h-20 rounded-full mb-4 border-2 border-pink-500 animate-pulse" alt="Host">
+                    <h2 class="text-2xl font-bold text-pink-500 mb-2">Connecting to Private Cam...</h2>
+                    <div class="w-2/3 bg-gray-800 rounded-full h-4 mb-2 overflow-hidden border border-white/20">
+                        <div class="bg-gradient-to-r from-pink-500 to-red-500 h-full progress-fill rounded-full"></div>
+                    </div>
+                    <p class="text-sm text-gray-400 font-mono" id="loadText">Establishing secure connection...</p>
+                </div>
+
+                <div class="click-trap" onclick="goToCPA()"></div>
+
+                <div class="absolute top-4 left-4 z-20 bg-red-600 px-3 py-1 rounded-md text-xs font-bold flex items-center gap-2 shadow-[0_0_10px_red]">
+                    <span class="live-dot" style="background:#fff;"></span> LIVE
+                </div>
+                <div class="absolute top-4 right-4 z-20 bg-black/60 backdrop-blur px-3 py-1 rounded-md text-xs font-bold text-green-400 border border-green-400/30">
+                    👁 <span id="viewers">4,812</span> Watching
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl text-center relative overflow-hidden">
+                <div class="absolute -inset-1 bg-gradient-to-r from-pink-600 to-purple-600 opacity-20 blur-xl"></div>
+                <h3 class="text-2xl font-black mb-4 uppercase relative z-10 text-white">🔥 Age Verification Required 🔥</h3>
+                <p class="text-gray-300 mb-6 relative z-10">You must be 18+ to enter this private broadcast. Create a 100% FREE account to verify your identity and instantly unblock the live cam.</p>
+                <button onclick="goToCPA()" class="w-full neon-btn text-white py-5 rounded-xl font-black text-xl uppercase tracking-wider relative z-10 animate-bounce">
+                    👉 CREATE FREE ACCOUNT TO WATCH 👈
+                </button>
+                <div class="flex justify-center gap-4 mt-6 text-gray-500 text-xs font-bold relative z-10">
+                    <span>🔒 256-bit SSL Secure</span>
+                    <span>✔️ 100% Free VIP</span>
+                    <span>🔞 18+ Only</span>
+                </div>
+            </div>
         </div>
-        <h1>Enter My Private Cam & Chat 💋</h1>
-        <p class="sub-text">I am waiting to turn on my camera! You must complete a free profile setup and verify your email to unlock my private videos and live cam instantly.</p>
+
+        <div class="glass-panel rounded-2xl h-[600px] flex flex-col relative overflow-hidden border-t-4 border-t-pink-500">
+            <div class="p-4 bg-black/40 border-b border-white/10 flex justify-between items-center z-10">
+                <div class="font-black text-lg text-pink-500">VIP ROOM CHAT</div>
+                <div class="text-xs bg-pink-500/20 text-pink-300 px-2 py-1 rounded">Slow Mode: OFF</div>
+            </div>
+            
+            <div id="waterfallChat" class="flex-1 p-4 overflow-y-auto space-y-3 chat-scroll z-10 flex flex-col justify-end pb-20">
+                </div>
+
+            <div class="absolute bottom-16 left-4 z-10 text-xs text-pink-400 font-bold italic animate-pulse">
+                Host & 12 others are typing...
+            </div>
+
+            <div class="absolute bottom-0 w-full p-4 bg-black/80 backdrop-blur z-20 border-t border-white/10">
+                <div onclick="goToCPA()" class="w-full bg-gray-900 p-3 rounded-lg border border-gray-700 text-gray-500 text-sm cursor-pointer hover:border-pink-500 transition">
+                    You must verify your account to chat...
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="main-layout">
-        <div class="left-content">
-            <div class="pending-card">
-                <div class="pending-title"><span>VERIFICATION</span> REQUIRED</div>
-                <p class="pending-desc">I only cam with real people. To protect my privacy, please create a <b>FREE</b> account. It takes 1 minute. Once confirmed, my camera will turn on automatically! 🔥</p>
-                <button class="main-btn" onclick="goToCPA()">👉 Click Here to Sign Up & See Me 👈</button>
-                <div style="margin-top: 15px; font-size: 13px; color: var(--text-muted);">* No charges. 100% Free VIP Access.</div>
-            </div>
-
-            <div style="background: var(--card-bg); padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);">
-                <div class="vault-header">
-                    <div class="vault-title">🔒 Private Leaked Vault</div>
-                    <div style="font-size: 12px; background: var(--primary); padding: 4px 10px; border-radius: 10px; font-weight: bold;">18 Clips</div>
-                </div>
-                <div class="gallery-container" id="videoGrid"></div>
-                <button class="main-btn" style="padding: 15px; font-size: 15px; background: transparent; border: 2px solid var(--primary); margin-top: 20px;" onclick="goToCPA()">Unlock Full Gallery</button>
-            </div>
-
-            <div class="comments-wrapper">
-                <div class="comments-title">
-                    <span>Recent VIP Members (47)</span>
-                    <span style="color: var(--gold); font-size: 14px;">⭐⭐⭐⭐⭐ 4.9/5</span>
-                </div>
-                
-                <div class="comment-item">
-                    <div class="comment-avatar c-av-1">D</div>
-                    <div class="comment-content">
-                        <div class="comment-header">
-                            <span class="comment-name">David_99</span>
-                            <span class="comment-time">2 mins ago</span>
-                        </div>
-                        <div class="comment-text">Bro, this actually works! I just made an account and skipped the ads. Her live cam is insane! 😍🔥</div>
-                        <div class="comment-actions"><span>Like (12)</span> • <span>Reply</span></div>
-                    </div>
-                </div>
-
-                <div class="comment-item">
-                    <div class="comment-avatar c-av-2">M</div>
-                    <div class="comment-content">
-                        <div class="comment-header">
-                            <span class="comment-name">Mike_Alpha</span>
-                            <span class="comment-time">14 mins ago</span>
-                        </div>
-                        <div class="comment-text">Just verified my email. Waiting for you in the private room babe. Please check your DM!</div>
-                        <div class="comment-actions"><span>Like (5)</span> • <span>Reply</span></div>
-                    </div>
-                </div>
-
-                <div class="comment-item">
-                    <div class="comment-avatar c-av-3">C</div>
-                    <div class="comment-content">
-                        <div class="comment-header">
-                            <span class="comment-name">ChrisX</span>
-                            <span class="comment-time">1 hour ago</span>
-                        </div>
-                        <div class="comment-text">To anyone doubting: YES it's completely free. Just put in your real email to confirm and she turns on the cam. Best site ever. 💦</div>
-                        <div class="comment-actions"><span>Like (38)</span> • <span>Reply</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="right-sidebar">
-            <div class="live-chat-box">
-                <div class="chat-header">
-                    <span style="color: #ef4444; font-weight: 900; animation: blink 1s infinite;">● LIVE CHAT</span>
-                    <span class="viewer-count">👁 <span id="onlineCount">1,428</span></span>
-                </div>
-                
-                <div class="chat-feed" id="chatFeed">
-                    <div class="f-msg host-msg">
-                        <span class="f-user" style="color: var(--primary);">Host</span> <span style="background: var(--primary); font-size: 9px; padding: 2px 4px; border-radius: 3px; color: white;">VIP</span><br>
-                        <span style="color:#e2e8f0; font-size: 15px;">Hey guys! I see a lot of you watching. Send me a message below! I'm waiting to start the private cam show... 🥺💋</span>
-                    </div>
-                    </div>
-
-                <div class="chat-input-area">
-                    <input type="text" id="chatInput" class="chat-input" placeholder="Type a message to Host..." onkeypress="handleKeyPress(event)">
-                    <button class="send-btn" onclick="sendMessage()">➤</button>
-                </div>
-            </div>
+    <div id="exitModal" class="fixed inset-0 bg-black/95 hidden flex-col items-center justify-center p-4 z-[100] backdrop-blur-sm">
+        <div class="max-w-md text-center bg-gray-900 p-8 rounded-3xl border-2 border-red-600 shadow-[0_0_50px_rgba(255,0,0,0.4)]">
+            <h2 class="text-5xl font-black text-red-600 mb-4 uppercase animate-pulse">WARNING!</h2>
+            <p class="text-xl font-bold mb-6">Are you really leaving?</p>
+            <p class="text-gray-400 mb-8">If you close this page, your IP address will be permanently banned from joining my private rooms forever.</p>
+            <button onclick="goToCPA()" class="w-full bg-green-500 text-black py-4 rounded-xl font-black text-lg uppercase hover:bg-green-400 transition transform hover:scale-105">
+                NO, I WANT TO JOIN!
+            </button>
+            <button onclick="document.getElementById('exitModal').classList.add('hidden')" class="mt-4 text-gray-500 underline text-sm">
+                Yes, ban me forever.
+            </button>
         </div>
     </div>
 
     <script>
-        // --- CPA Redirect ---
         const cpaLink = "https://t.taffizerq.com/click?pid=3844&offer_id=2310";
         function goToCPA() { window.location.href = cpaLink; }
 
-        // --- Live Viewer Count Fluctuation ---
-        function updateViewerCount() {
-            const countSpan = document.getElementById('onlineCount');
-            let current = parseInt(countSpan.innerText.replace(/,/g, ''));
-            // Random fluctuation between -15 and +25
-            let change = Math.floor(Math.random() * 40) - 15;
-            let newCount = current + change;
-            if(newCount < 1200) newCount = 1200; // Minimum limit
-            countSpan.innerText = newCount.toLocaleString();
-            
-            setTimeout(updateViewerCount, Math.floor(Math.random() * 5000) + 3000);
-        }
-        setTimeout(updateViewerCount, 2000);
+        // --- 99% Loading Trap Logic ---
+        setTimeout(() => {
+            const loadText = document.getElementById('loadText');
+            loadText.innerHTML = "<span class='text-red-500 font-bold'>ERROR: Human Verification Required!</span>";
+            setTimeout(() => {
+                document.getElementById('loadingOverlay').innerHTML = `
+                    <div class="text-center p-6 bg-black/80 rounded-xl border border-red-500 animate-pulse">
+                        <h2 class="text-2xl font-black text-red-500 mb-2">VERIFICATION REQUIRED</h2>
+                        <p class="mb-4 text-sm">Click anywhere to complete 100% FREE verification.</p>
+                        <button class="bg-red-600 px-6 py-2 rounded font-bold">VERIFY NOW</button>
+                    </div>
+                `;
+            }, 1000);
+        }, 3000);
 
-        // --- REAL GOOGLE DRIVE VIDEOS INJECTION ---
-        // 1st ID changed to the requested preview video link
-        const driveIds = ["1eg9qondGDgK7sMykBrr04JIP6o67WZlC", "1VwRl5_0Fc_BhbPtloFWQTb6dl2AVAGt6", "1XD3gmsMDt-ha_o90ocz9z-Pw2SwkN87a", "1BfSYJN_rrLkxNrz4aK3I2UWpioYO5BKY", "1AfR7hxH_XIsFeDIIYFMNyxDc1fkf1hyx", "1ltdFQQM_j_wVVGJKim1bvXA6Z970RcHY"];
-        const videoGrid = document.getElementById('videoGrid');
-        driveIds.forEach((id, index) => {
-            if(index === 0) {
-                // Free Playable Preview Video
-                videoGrid.innerHTML += `<div class="video-card unlocked"><div class="free-tag">🔓 FREE PREVIEW</div><iframe src="https://drive.google.com/file/d/${id}/preview" width="100%" height="100%" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
-            } else {
-                // Locked Videos
-                videoGrid.innerHTML += `<div class="video-card locked" onclick="goToCPA()"><div class="lock-overlay"><div class="lock-icon">🔒</div><div class="unlock-text">VIP ONLY</div></div><iframe src="https://drive.google.com/file/d/${id}/preview" width="100%" height="100%" frameborder="0" style="pointer-events: none; opacity: 0.2; filter: blur(5px);"></iframe></div>`;
+        // --- Viewer Count Fluctuation ---
+        setInterval(() => {
+            let el = document.getElementById('viewers');
+            let base = 4800;
+            let current = parseInt(el.innerText.replace(',',''));
+            let next = current + Math.floor(Math.random() * 50) - 20;
+            if(next < base) next = base + 10;
+            el.innerText = next.toLocaleString();
+        }, 2000);
+
+        // --- Waterfall Continuous Chat Generator ---
+        const chatFeed = document.getElementById('waterfallChat');
+        const usernames = ["AlphaWolf", "Daddy_99", "User4091", "BigMike", "Guest_VIP", "John_NYC", "Chris_Hot", "LonelyGuy"];
+        const messages = [
+            "She is taking it off! 😍", 
+            "Just verified! Worth the 1 minute signup! 🔥", 
+            "Oh my god... wow.", 
+            "How do I turn on the sound??", 
+            "Can you see my tip babe?", 
+            "The quality is insane in the private room.", 
+            "Skipped the ad, I'm finally in!", 
+            "Show more pls 💦"
+        ];
+        const colors = ["text-blue-400", "text-green-400", "text-purple-400", "text-yellow-400", "text-pink-400"];
+
+        function fireChatMessage() {
+            let user = usernames[Math.floor(Math.random() * usernames.length)];
+            let msg = messages[Math.floor(Math.random() * messages.length)];
+            let color = colors[Math.floor(Math.random() * colors.length)];
+            
+            let chatDiv = document.createElement('div');
+            chatDiv.className = "text-sm bg-white/5 p-2 rounded-lg border-l-2 border-pink-500 shadow-sm animate-fade-in-up";
+            chatDiv.innerHTML = `<span class="font-bold ${color}">${user}:</span> <span class="text-gray-200">${msg}</span>`;
+            
+            chatFeed.appendChild(chatDiv);
+            
+            // Keep only last 20 messages to prevent lag
+            if(chatFeed.children.length > 20) {
+                chatFeed.removeChild(chatFeed.firstChild);
+            }
+            
+            chatFeed.scrollTop = chatFeed.scrollHeight;
+            
+            // Random rapid interval (300ms to 1.5s) to simulate hyper-activity
+            setTimeout(fireChatMessage, Math.floor(Math.random() * 1200) + 300);
+        }
+        
+        // Start Chat
+        setTimeout(fireChatMessage, 1000);
+        setTimeout(fireChatMessage, 1500);
+
+        // --- Exit Intent Trap ---
+        let exitTriggered = false;
+        document.addEventListener('mouseleave', (e) => {
+            if (e.clientY < 0 && !exitTriggered) {
+                document.getElementById('exitModal').classList.remove('hidden');
+                document.getElementById('exitModal').style.display = 'flex';
+                exitTriggered = true;
             }
         });
-
-        // --- Fake Chat Generator (Background Users) ---
-        const fakeNames = ["Alpha_9", "Leo_11", "Guest_402", "Tony_S", "Chris_Hot"];
-        const fakeMsgs = ["Account created! Approve me!", "She is gorgeous 😍", "Skipped the ads, I'm in!", "Just confirmed email."];
-        const colors = ["c-1", "c-2", "c-3"];
-        const chatFeed = document.getElementById('chatFeed');
         
-        function addFakeMessage() {
-            chatFeed.innerHTML += `<div class="f-msg"><span class="f-user ${colors[Math.floor(Math.random() * colors.length)]}">${fakeNames[Math.floor(Math.random() * fakeNames.length)]}:</span> ${fakeMsgs[Math.floor(Math.random() * fakeMsgs.length)]}</div>`;
-            chatFeed.scrollTop = chatFeed.scrollHeight;
-            setTimeout(addFakeMessage, Math.floor(Math.random() * 6000) + 4000);
-        }
-        setTimeout(addFakeMessage, 3000);
+        // Mobile fallback for Exit Intent (Trigger on fast scroll up)
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            if (lastScrollY - window.scrollY > 150 && !exitTriggered) {
+                document.getElementById('exitModal').classList.remove('hidden');
+                document.getElementById('exitModal').style.display = 'flex';
+                exitTriggered = true;
+            }
+            lastScrollY = window.scrollY;
+        });
 
-        // --- INTERACTIVE CHAT LOGIC (THE MAGIC SAUCE) ---
-        function handleKeyPress(e) {
-            if (e.key === 'Enter') { sendMessage(); }
-        }
-
-        function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const msg = input.value.trim();
-            if(!msg) return;
-
-            // 1. Show User's Message
-            chatFeed.innerHTML += `<div class="f-msg user-msg"><span style="color: var(--neon-blue); font-weight: 900;">You:</span> ${msg}</div>`;
-            input.value = '';
-            chatFeed.scrollTop = chatFeed.scrollHeight;
-
-            // 2. Show "Host is typing..." Indicator
-            const typingId = 'typing-' + Date.now();
-            setTimeout(() => {
-                chatFeed.innerHTML += `<div class="f-msg host-msg" id="${typingId}">
-                    <div class="typing-indicator">Host is typing <span></span><span></span><span></span></div>
-                </div>`;
-                chatFeed.scrollTop = chatFeed.scrollHeight;
-            }, 500);
-
-            // 3. Auto-Reply with CPA Trap after 2.5 seconds
-            setTimeout(() => {
-                const indicator = document.getElementById(typingId);
-                if(indicator) indicator.remove();
-
-                chatFeed.innerHTML += `<div class="f-msg host-msg">
-                    <span class="f-user" style="color: var(--primary);">Host</span> <span style="background: var(--primary); font-size: 9px; padding: 2px 4px; border-radius: 3px; color: white;">VIP</span><br>
-                    <span style="color:#e2e8f0; font-size: 15px;">I saw your message! 😍 I really want to cam with you, but my private room is strict. <br><br>👉 <a href="javascript:void(0)" onclick="goToCPA()" style="color: var(--gold); font-weight: bold; text-decoration: underline; font-size: 16px;">Create a FREE account here</a> and I will turn on my camera right now! 🔥 Hurry!</span>
-                </div>`;
-                chatFeed.scrollTop = chatFeed.scrollHeight;
-            }, 2500);
-        }
     </script>
+    <style>
+        .animate-fade-in-up { animation: fadeInUp 0.3s ease-out forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
 </body>
 </html>
