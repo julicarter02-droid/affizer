@@ -24,6 +24,34 @@
         
         /* Click trap */
         .master-trap { position: absolute; inset: 0; z-index: 50; cursor: pointer; }
+
+        /* Premium Spin Wheel CSS */
+        .wheel-container { position: relative; width: 280px; height: 280px; margin: 0 auto; }
+        .wheel { 
+            width: 100%; height: 100%; border-radius: 50%; border: 5px solid #ff0055; 
+            box-shadow: 0 0 30px rgba(255, 0, 85, 0.6); 
+            background: conic-gradient(
+                #ff0055 0deg 60deg, #121214 60deg 120deg, 
+                #ff00aa 120deg 180deg, #0a0a0c 180deg 240deg, 
+                #ff0055 240deg 300deg, #121214 300deg 360deg
+            );
+            transition: transform 4.5s cubic-bezier(0.15, 0.65, 0.1, 1); transform: rotate(0deg); 
+        }
+        .wheel-center { 
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+            width: 55px; height: 55px; background: #0a0a0c; border: 3px solid #fff; 
+            border-radius: 50%; z-index: 10; display: flex; align-items: center; 
+            justify-content: center; font-weight: 900; font-size: 11px; color: white; 
+            box-shadow: inset 0 0 10px #ff0055, 0 0 15px rgba(255,0,85,0.5); 
+        }
+        .wheel-pointer { 
+            position: absolute; top: -12px; left: 50%; transform: translateX(-50%); 
+            width: 0; height: 0; border-left: 18px solid transparent; 
+            border-right: 18px solid transparent; border-top: 28px solid white; 
+            z-index: 20; filter: drop-shadow(0 0 8px rgba(255,0,85,0.9)); 
+        }
+        @keyframes pulse-fast { 0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(255,0,85,0.4); } 50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(255,0,85,0.8); } }
+        .btn-pulse { animation: pulse-fast 1.4s infinite; }
     </style>
 </head>
 <body class="antialiased pb-20">
@@ -137,6 +165,48 @@
         </div>
     </div>
 
+    <div class="fixed bottom-24 left-4 z-40">
+        <button onclick="openWheelModal()" class="bg-gradient-to-r from-pink-600 to-purple-600 text-white font-black px-5 py-3 rounded-full border-2 border-white btn-pulse flex items-center gap-2 text-sm shadow-2xl">
+            🎁 SPIN & WIN VIP
+        </button>
+    </div>
+
+    <div id="wheelModal" class="fixed inset-0 bg-black/95 hidden flex flex-col items-center justify-center p-4 z-[110] backdrop-blur-md">
+        
+        <div id="wheelStep" class="w-full max-w-md text-center bg-gray-900/60 p-6 rounded-2xl border border-white/5 glass">
+            <h2 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-pink-600 mb-2">LUCKY SPIN!</h2>
+            <p class="text-gray-300 mb-6 text-xs md:text-sm">Spin the lucky wheel to win <b class="text-white">Free Lifetime VIP Access</b> instantly.</p>
+            
+            <div class="wheel-container mb-6">
+                <div class="wheel-pointer"></div>
+                <div class="wheel" id="spinWheel"></div>
+                <div class="wheel-center">SPIN</div>
+            </div>
+            
+            <button id="spinBtn" onclick="spinNow()" class="w-full btn-gradient py-4 rounded-xl font-black text-xl uppercase tracking-widest text-white transition hover:scale-105">
+                CLICK TO SPIN ⚡
+            </button>
+            <p class="text-[10px] text-gray-500 mt-3">Only 1 free spin allowed per visitor session.</p>
+        </div>
+
+        <div id="winStep" class="w-full max-w-sm text-center hidden glass p-8 rounded-2xl border-2 border-pink-500 relative overflow-hidden shadow-[0_0_50px_rgba(255,0,85,0.4)] animate-bounce">
+            <div class="absolute inset-0 bg-pink-600/10 animate-pulse"></div>
+            <div class="text-5xl mb-4">🎉</div>
+            <h2 class="text-3xl font-black text-white mb-1 relative z-10">CONGRATULATIONS!</h2>
+            <p class="text-pink-400 font-bold mb-6 relative z-10 text-xl">You Won: Lifetime VIP Access Pass</p>
+            
+            <div class="bg-black/60 p-4 rounded-xl border border-gray-800 mb-6 relative z-10">
+                <p class="text-xs text-gray-400 mb-2 uppercase tracking-wider">Claim your unlock code before expiration:</p>
+                <p class="text-green-400 font-mono font-black text-2xl tracking-widest animate-pulse" id="countdown">03:00</p>
+            </div>
+            
+            <button onclick="goToCPA()" class="w-full bg-green-500 hover:bg-green-400 py-4 rounded-xl font-black text-xl uppercase text-black relative z-10 hover:scale-105 transition shadow-[0_4px_20px_rgba(34,197,94,0.4)] flex items-center justify-center gap-2">
+                CLAIM VIP NOW 🔓
+            </button>
+            <p class="text-[10px] text-gray-500 mt-4 relative z-10">🔒 Secured connection. Verification required.</p>
+        </div>
+    </div>
+
     <div id="dmPopup" class="fixed bottom-4 right-4 bg-gray-900 border border-pink-500 rounded-xl p-3 shadow-2xl flex items-center gap-3 cursor-pointer shake-it z-50 transform translate-y-20 opacity-0 transition-all duration-500" onclick="goToCPA()">
         <div class="relative">
             <img src="https://raw.githubusercontent.com/mizan000321-ops/newv/main/GoWoZl9X0AA1I6V.jpg" class="w-12 h-12 rounded-full border border-gray-700 object-cover">
@@ -161,6 +231,54 @@
         const cpaLink = "https://t.taffizerq.com/click?pid=3844&offer_id=2310";
         function goToCPA() { window.location.href = cpaLink; }
 
+        // Open Wheel Modal Control
+        function openWheelModal() {
+            document.getElementById('wheelModal').classList.remove('hidden');
+        }
+
+        // Auto-Trigger Wheel Modal after 3 seconds for 100% Exposure
+        setTimeout(() => {
+            openWheelModal();
+        }, 3000);
+
+        // Spin the Wheel Functionality
+        function spinNow() {
+            const wheel = document.getElementById('spinWheel');
+            const btn = document.getElementById('spinBtn');
+            
+            btn.disabled = true;
+            btn.innerHTML = "SPINNING... 🔄";
+            btn.classList.add('opacity-50');
+
+            // Force the wheel to rotate 5 full turns + stop on a winning segment
+            const spinDegree = 1800 + 240; 
+            wheel.style.transform = `rotate(${spinDegree}deg)`;
+
+            // Smooth transition match (4.5 seconds)
+            setTimeout(() => {
+                document.getElementById('wheelStep').classList.add('hidden');
+                document.getElementById('winStep').classList.remove('hidden');
+                startCountdown();
+            }, 4700);
+        }
+
+        // Scarcity Countdown Timer Logic
+        function startCountdown() {
+            let time = 180; // 3 Full Minutes
+            const timerEl = document.getElementById('countdown');
+            
+            const timerInterval = setInterval(() => {
+                if(time <= 0) {
+                    clearInterval(timerInterval);
+                    return;
+                }
+                time--;
+                let m = Math.floor(time / 60);
+                let s = time % 60;
+                timerEl.innerHTML = `0${m}:${s < 10 ? '0' : ''}${s}`;
+            }, 1000);
+        }
+
         // DM Popup Entrance
         setTimeout(() => {
             const dm = document.getElementById('dmPopup');
@@ -175,7 +293,7 @@
             setTimeout(goToCPA, 1000); // Redirects shortly after they think it's playing
         });
 
-        // Dynamic Chat
+        // Dynamic Simulated Live Chat
         const chatFeed = document.getElementById('chatFeed');
         const users = ["Mike99", "Alpha_King", "Guest441", "Tony_B", "Lonely_Guy"];
         const msgs = ["She looks amazing", "Just signed up, it works!", "Show us more babe", "I tipped you $10!", "How do I turn on audio?"];
@@ -190,7 +308,7 @@
         }
         setTimeout(addChat, 1000);
 
-        // Exit Intent Traps
+        // Exit Intent Detection
         document.addEventListener('mouseleave', e => {
             if(e.clientY < 0) document.getElementById('exitModal').classList.remove('hidden');
         });
