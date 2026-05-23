@@ -25,26 +25,35 @@
         /* Click trap */
         .master-trap { position: absolute; inset: 0; z-index: 50; cursor: pointer; }
 
-        /* Premium Spin Wheel Structure */
+        /* PERFECTED SPIN WHEEL CSS */
         .wheel-container { position: relative; width: 300px; height: 300px; margin: 0 auto; }
         .wheel { 
             width: 100%; height: 100%; border-radius: 50%; border: 6px solid #ff0055; 
             box-shadow: 0 0 35px rgba(255, 0, 85, 0.7); 
             position: relative; overflow: hidden;
             background: conic-gradient(
-                #ff0055 0deg 60deg, #16161a 60deg 120deg, 
-                #ff00aa 120deg 180deg, #0d0d11 180deg 240deg, 
-                #ff0055 240deg 300deg, #16161a 300deg 360deg
+                #ff0055 0deg 60deg, #1a1a1a 60deg 120deg, 
+                #ff00aa 120deg 180deg, #0f0f0f 180deg 240deg, 
+                #ff0055 240deg 300deg, #1a1a1a 300deg 360deg
             );
             transition: transform 5s cubic-bezier(0.15, 0.75, 0.1, 1); transform: rotate(0deg); 
         }
-        /* Wheel Text Styling */
-        .wheel-label {
-            position: absolute; top: 50%; left: 50%;
-            transform-origin: 0 0; width: 120px; text-align: right;
-            font-size: 11px; font-weight: 900; color: #fff; text-transform: uppercase;
-            letter-spacing: 0.5px; text-shadow: 0 2px 5px rgba(0,0,0,0.9);
+        /* Perfectly aligned wheel segments */
+        .wheel-segment {
+            position: absolute; top: 50%; left: 50%; width: 140px; height: 40px;
+            margin-top: -20px; transform-origin: 0% 50%; text-align: right;
+            padding-right: 15px; font-weight: 900; font-size: 13px; color: white;
+            text-transform: uppercase; text-shadow: 1px 1px 4px black;
+            display: flex; align-items: center; justify-content: flex-end;
         }
+        /* Placing each segment exactly in the middle of its slice */
+        .seg-1 { transform: rotate(30deg); }
+        .seg-2 { transform: rotate(90deg); }
+        .seg-3 { transform: rotate(150deg); }
+        .seg-4 { transform: rotate(210deg); }
+        .seg-5 { transform: rotate(270deg); color: #fff; font-size: 14px; text-shadow: 0 0 8px #fff, 0 0 15px #ff0055;} /* LIFETIME VIP */
+        .seg-6 { transform: rotate(330deg); }
+
         .wheel-center { 
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
             width: 60px; height: 60px; background: #0a0a0c; border: 3px solid #fff; 
@@ -55,7 +64,7 @@
         .wheel-pointer { 
             position: absolute; top: -15px; left: 50%; transform: translateX(-50%); 
             width: 0; height: 0; border-left: 20px solid transparent; 
-            border-right: 20px solid transparent; border-top: 32px solid white; 
+            border-right: 20px solid transparent; border-top: 35px solid white; 
             z-index: 20; filter: drop-shadow(0 0 10px rgba(255,0,85,1)); 
         }
         @keyframes pulse-fast { 0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(255,0,85,0.4); } 50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(255,0,85,0.8); } }
@@ -96,7 +105,7 @@
         <div class="glass p-4 rounded-xl flex flex-col md:flex-row justify-between items-center gap-4">
             <p class="text-sm md:text-base text-gray-300">Welcome to my secret room! 😈 Create a free account to watch my live cam and unlock my private gallery.</p>
             
-            <div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full cursor-pointer hover:bg-white/10 transition border border-pink-500/30" onclick="goToCPA()">
+            <div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full cursor-pointer hover:bg-white/10 transition border border-pink-500/30" onclick="openWheelModal()">
                 <div class="w-8 h-8 rounded-full bg-pink-600 flex items-center justify-center animate-pulse">
                     <svg class="w-4 h-4 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 </div>
@@ -120,28 +129,90 @@
                     </div>
                 </div>
 
-                <div class="relative rounded-2xl overflow-hidden bg-black ring-1 ring-pink-500 shadow-[0_0_20px_rgba(255,0,85,0.2)] aspect-video">
+                <div class="relative rounded-2xl overflow-hidden bg-black ring-1 ring-pink-500 shadow-[0_0_20px_rgba(255,0,85,0.2)] aspect-video cursor-pointer" onclick="openWheelModal()">
                     <iframe src="https://drive.google.com/file/d/1eg9qondGDgK7sMykBrr04JIP6o67WZlC/preview" class="w-full h-full pointer-events-none" frameborder="0"></iframe>
                     
                     <div class="absolute top-3 left-3 bg-red-600 px-3 py-1 rounded text-xs font-black animate-pulse flex items-center gap-2">
                         <div class="w-2 h-2 bg-white rounded-full"></div> LIVE CAM
                     </div>
 
-                    <div class="master-trap" onclick="goToCPA()"></div>
-
-                    <div id="playOverlay" class="absolute inset-0 bg-black/40 flex items-center justify-center z-40 transition-opacity">
-                        <div class="w-20 h-20 bg-pink-600/80 rounded-full flex items-center justify-center backdrop-blur-sm shadow-[0_0_30px_#ff0055] animate-bounce">
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center z-40 hover:bg-black/20 transition-all">
+                        <div class="w-20 h-20 bg-pink-600/90 rounded-full flex items-center justify-center backdrop-blur-sm shadow-[0_0_30px_#ff0055] animate-bounce">
                             <svg class="w-10 h-10 text-white ml-2" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
                     </div>
                 </div>
 
-                <button onclick="goToCPA()" class="w-full btn-gradient py-4 rounded-xl font-black text-lg uppercase tracking-widest text-white mt-4 relative overflow-hidden">
-                    👉 Verify Free Account to Watch 👈
+                <button onclick="openWheelModal()" class="w-full btn-gradient py-4 rounded-xl font-black text-lg uppercase tracking-widest text-white mt-4 relative overflow-hidden">
+                    👉 Click Here to Watch Live 👈
                 </button>
             </div>
 
             <div class="glass rounded-2xl h-[500px] flex flex-col relative overflow-hidden border-t-2 border-t-pink-500">
                 <div class="p-4 border-b border-white/5 flex justify-between items-center bg-black/50">
                     <span class="font-bold text-sm">VIP CHAT ROOM</span>
-                    <span class="text-xs text-green-4
+                    <span class="text-xs text-green-400 font-mono">1,842 Viewers</span>
+                </div>
+                <div id="chatFeed" class="flex-1 p-4 overflow-y-auto space-y-3 pb-16 flex flex-col justify-end text-sm"></div>
+                <div class="absolute bottom-0 w-full p-3 bg-gray-900 border-t border-gray-800" onclick="openWheelModal()">
+                    <div class="w-full bg-black border border-gray-700 p-3 rounded-lg text-gray-500 cursor-pointer hover:border-pink-500 transition">Log in to chat...</div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-xl font-bold mb-4 flex items-center gap-2 border-b border-white/10 pb-2">
+                🔒 Exclusive Media <span class="text-xs bg-pink-600 px-2 py-1 rounded-full text-white">128 Locked</span>
+            </h3>
+            <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 md:gap-4">
+                <script>
+                    for(let i=0; i<6; i++){
+                        document.write(`
+                        <div class="relative aspect-square rounded-xl overflow-hidden bg-gray-800 cursor-pointer gallery-card" onclick="openWheelModal()">
+                            <img src="https://raw.githubusercontent.com/mizan000321-ops/newv/main/GoWoZl9X0AA1I6V.jpg" class="w-full h-full object-cover blur-trap absolute inset-0">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center z-10 text-white">
+                                <svg class="w-6 h-6 mb-1 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                                <span class="text-[10px] font-bold bg-pink-600 px-2 py-0.5 rounded">VIP</span>
+                            </div>
+                        </div>`);
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed bottom-24 left-4 z-40">
+        <button onclick="openWheelModal()" class="bg-gradient-to-r from-pink-600 to-purple-600 text-white font-black px-5 py-3 rounded-full border-2 border-white btn-pulse flex items-center gap-2 text-sm shadow-2xl">
+            🎁 SPIN & WIN VIP
+        </button>
+    </div>
+
+    <div id="wheelModal" class="fixed inset-0 bg-black/95 hidden flex flex-col items-center justify-center p-4 z-[110] backdrop-blur-md">
+        
+        <div id="wheelStep" class="w-full max-w-md text-center bg-gray-900/80 p-6 rounded-2xl border border-pink-500/30 glass relative overflow-hidden">
+            <h2 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-pink-600 mb-2">UNLOCK LIVE CAM</h2>
+            <p class="text-gray-300 mb-6 text-xs md:text-sm">Spin the lucky wheel to win <b class="text-white">Free Lifetime VIP Access</b>.</p>
+            
+            <div class="wheel-container mb-6">
+                <div class="wheel-pointer"></div>
+                <div class="wheel" id="spinWheel">
+                    <div class="wheel-segment seg-1">SECRET GALLERY</div>
+                    <div class="wheel-segment seg-2">FREE ACCESS</div>
+                    <div class="wheel-segment seg-3">PRIVATE CAM</div>
+                    <div class="wheel-segment seg-4">JACKPOT 🔞</div>
+                    <div class="wheel-segment seg-5">LIFETIME VIP</div>
+                    <div class="wheel-segment seg-6">TRY AGAIN</div>
+                </div>
+                <div class="wheel-center">SPIN</div>
+            </div>
+            
+            <button id="spinBtn" onclick="spinNow()" class="w-full btn-gradient py-4 rounded-xl font-black text-xl uppercase tracking-widest text-white transition hover:scale-105 shadow-[0_0_20px_#ff0055]">
+                SPIN TO WATCH ⚡
+            </button>
+            <p class="text-[10px] text-gray-500 mt-3">Guaranteed win on your first spin today.</p>
+        </div>
+
+        <div id="winStep" class="w-full max-w-sm text-center hidden glass p-8 rounded-2xl border-2 border-pink-500 relative overflow-hidden shadow-[0_0_50px_rgba(255,0,85,0.4)]">
+            <div class="absolute inset-0 bg-pink-600/10 animate-pulse"></div>
+            <div class="text-5xl mb-4">🎉</div>
+            <h2 class="text
