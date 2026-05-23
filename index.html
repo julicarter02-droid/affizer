@@ -25,36 +25,48 @@
         /* Click trap */
         .master-trap { position: absolute; inset: 0; z-index: 50; cursor: pointer; }
 
-        /* Premium Spin Wheel CSS */
-        .wheel-container { position: relative; width: 280px; height: 280px; margin: 0 auto; }
+        /* Premium Spin Wheel Structure */
+        .wheel-container { position: relative; width: 300px; height: 300px; margin: 0 auto; }
         .wheel { 
-            width: 100%; height: 100%; border-radius: 50%; border: 5px solid #ff0055; 
-            box-shadow: 0 0 30px rgba(255, 0, 85, 0.6); 
+            width: 100%; height: 100%; border-radius: 50%; border: 6px solid #ff0055; 
+            box-shadow: 0 0 35px rgba(255, 0, 85, 0.7); 
+            position: relative; overflow: hidden;
             background: conic-gradient(
-                #ff0055 0deg 60deg, #121214 60deg 120deg, 
-                #ff00aa 120deg 180deg, #0a0a0c 180deg 240deg, 
-                #ff0055 240deg 300deg, #121214 300deg 360deg
+                #ff0055 0deg 60deg, #16161a 60deg 120deg, 
+                #ff00aa 120deg 180deg, #0d0d11 180deg 240deg, 
+                #ff0055 240deg 300deg, #16161a 300deg 360deg
             );
-            transition: transform 4.5s cubic-bezier(0.15, 0.65, 0.1, 1); transform: rotate(0deg); 
+            transition: transform 5s cubic-bezier(0.15, 0.75, 0.1, 1); transform: rotate(0deg); 
+        }
+        /* Wheel Text Styling */
+        .wheel-label {
+            position: absolute; top: 50%; left: 50%;
+            transform-origin: 0 0; width: 120px; text-align: right;
+            font-size: 11px; font-weight: 900; color: #fff; text-transform: uppercase;
+            letter-spacing: 0.5px; text-shadow: 0 2px 5px rgba(0,0,0,0.9);
         }
         .wheel-center { 
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-            width: 55px; height: 55px; background: #0a0a0c; border: 3px solid #fff; 
+            width: 60px; height: 60px; background: #0a0a0c; border: 3px solid #fff; 
             border-radius: 50%; z-index: 10; display: flex; align-items: center; 
-            justify-content: center; font-weight: 900; font-size: 11px; color: white; 
-            box-shadow: inset 0 0 10px #ff0055, 0 0 15px rgba(255,0,85,0.5); 
+            justify-content: center; font-weight: 900; font-size: 13px; color: white; 
+            box-shadow: inset 0 0 10px #ff0055, 0 0 20px rgba(255,0,85,0.6); 
         }
         .wheel-pointer { 
-            position: absolute; top: -12px; left: 50%; transform: translateX(-50%); 
-            width: 0; height: 0; border-left: 18px solid transparent; 
-            border-right: 18px solid transparent; border-top: 28px solid white; 
-            z-index: 20; filter: drop-shadow(0 0 8px rgba(255,0,85,0.9)); 
+            position: absolute; top: -15px; left: 50%; transform: translateX(-50%); 
+            width: 0; height: 0; border-left: 20px solid transparent; 
+            border-right: 20px solid transparent; border-top: 32px solid white; 
+            z-index: 20; filter: drop-shadow(0 0 10px rgba(255,0,85,1)); 
         }
         @keyframes pulse-fast { 0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(255,0,85,0.4); } 50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(255,0,85,0.8); } }
         .btn-pulse { animation: pulse-fast 1.4s infinite; }
     </style>
 </head>
 <body class="antialiased pb-20">
+
+    <div class="bg-red-600/90 text-white text-center py-2 px-4 text-xs md:text-sm font-black tracking-wide border-b border-red-500 shadow-lg relative z-30">
+        🔥 WARNING: ONLY <span id="liveSpots" class="bg-white text-red-600 px-2 py-0.5 rounded font-mono animate-pulse">7</span> FREE VIP PASSES LEFT FOR TODAY!
+    </div>
 
     <div class="relative w-full h-48 md:h-64 bg-gray-900 border-b border-pink-600/30">
         <div class="absolute inset-0 bg-[url('https://raw.githubusercontent.com/mizan000321-ops/newv/main/GoWoZl9X0AA1I6V.jpg')] bg-cover bg-center opacity-30 blur-sm"></div>
@@ -179,7 +191,14 @@
             
             <div class="wheel-container mb-6">
                 <div class="wheel-pointer"></div>
-                <div class="wheel" id="spinWheel"></div>
+                <div class="wheel" id="spinWheel">
+                    <div class="wheel-label" style="transform: translate(-50%, -50%) rotate(30deg) translate(50px); shadow: 2px 2px 5px black;">Free Pics</div>
+                    <div class="wheel-label" style="transform: translate(-50%, -50%) rotate(90deg) translate(50px);">Try Again</div>
+                    <div class="wheel-label" style="transform: translate(-50%, -50%) rotate(150deg) translate(50px);">Live Cam</div>
+                    <div class="wheel-label" style="transform: translate(-50%, -50%) rotate(210deg) translate(50px);">Jackpot 🔞</div>
+                    <div class="wheel-label" style="transform: translate(-50%, -50%) rotate(270deg) translate(50px); color: #fff; font-size: 12px;">LIFETIME VIP</div>
+                    <div class="wheel-label" style="transform: translate(-50%, -50%) rotate(330deg) translate(50px);">No Luck</div>
+                </div>
                 <div class="wheel-center">SPIN</div>
             </div>
             
@@ -189,7 +208,7 @@
             <p class="text-[10px] text-gray-500 mt-3">Only 1 free spin allowed per visitor session.</p>
         </div>
 
-        <div id="winStep" class="w-full max-w-sm text-center hidden glass p-8 rounded-2xl border-2 border-pink-500 relative overflow-hidden shadow-[0_0_50px_rgba(255,0,85,0.4)] animate-bounce">
+        <div id="winStep" class="w-full max-w-sm text-center hidden glass p-8 rounded-2xl border-2 border-pink-500 relative overflow-hidden shadow-[0_0_50px_rgba(255,0,85,0.4)]">
             <div class="absolute inset-0 bg-pink-600/10 animate-pulse"></div>
             <div class="text-5xl mb-4">🎉</div>
             <h2 class="text-3xl font-black text-white mb-1 relative z-10">CONGRATULATIONS!</h2>
@@ -236,10 +255,22 @@
             document.getElementById('wheelModal').classList.remove('hidden');
         }
 
-        // Auto-Trigger Wheel Modal after 3 seconds for 100% Exposure
+        // DELAYED TRIGGER: Automatically popup the wheel after 8 Seconds (Gives time to absorb the page content)
         setTimeout(() => {
             openWheelModal();
-        }, 3000);
+        }, 8000);
+
+        // Live Quota/Spots Fake Counter Logic
+        let spots = 7;
+        const spotsEl = document.getElementById('liveSpots');
+        const interval = setInterval(() => {
+            if(spots <= 2) {
+                clearInterval(interval);
+                return;
+            }
+            spots--;
+            spotsEl.innerHTML = spots;
+        }, 15000); // Every 15 seconds one spot drops to create realistic fear of missing out
 
         // Spin the Wheel Functionality
         function spinNow() {
@@ -250,16 +281,16 @@
             btn.innerHTML = "SPINNING... 🔄";
             btn.classList.add('opacity-50');
 
-            // Force the wheel to rotate 5 full turns + stop on a winning segment
-            const spinDegree = 1800 + 240; 
+            // Force the wheel to rotate 4 full turns + stop precisely on "LIFETIME VIP" segment
+            const spinDegree = 1440 + 90; 
             wheel.style.transform = `rotate(${spinDegree}deg)`;
 
-            // Smooth transition match (4.5 seconds)
+            // Smooth transition match (5 seconds)
             setTimeout(() => {
                 document.getElementById('wheelStep').classList.add('hidden');
                 document.getElementById('winStep').classList.remove('hidden');
                 startCountdown();
-            }, 4700);
+            }, 5200);
         }
 
         // Scarcity Countdown Timer Logic
@@ -290,7 +321,7 @@
         document.getElementById('playOverlay').addEventListener('click', (e) => {
             e.stopPropagation();
             document.getElementById('playOverlay').classList.add('hidden');
-            setTimeout(goToCPA, 1000); // Redirects shortly after they think it's playing
+            setTimeout(goToCPA, 1000); 
         });
 
         // Dynamic Simulated Live Chat
