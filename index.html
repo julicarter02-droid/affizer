@@ -3,85 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Private Cam | Exclusive</title>
+    <title>Jessica's VIP Profile | LIVE NOW</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background: #050505; color: #fff; font-family: 'Inter', sans-serif; }
-        .cam-frame { border: 2px solid #333; border-radius: 12px; overflow: hidden; background: #000; }
-        .chat-box { height: 400px; overflow-y: auto; background: #0a0a0a; border-radius: 12px; }
-        .message { padding: 8px 12px; margin-bottom: 5px; border-bottom: 1px solid #111; }
-        .live-badge { background: #e11d48; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 10px; }
-        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); }
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800;900&display=swap');
+        body { background: #0a0a0c; color: #fff; font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+        
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .pink-glow { text-shadow: 0 0 15px #ff0055; }
+        .btn-gradient { background: linear-gradient(90deg, #ff0055 0%, #ff00aa 100%); box-shadow: 0 5px 25px rgba(255,0,85,0.4); }
+        .btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 8px 35px rgba(255,0,85,0.7); }
+        
+        /* Blurry Image Trap */
+        .blur-trap { filter: blur(12px) brightness(0.6); transition: all 0.3s; }
+        .gallery-card:hover .blur-trap { filter: blur(8px) brightness(0.8); }
+        
+        /* Shaking Animation */
+        @keyframes shake { 0%, 100% {transform: translateX(0);} 10%, 30%, 50%, 70%, 90% {transform: translateX(-3px);} 20%, 40%, 60%, 80% {transform: translateX(3px);} }
+        .shake-it { animation: shake 2s infinite ease-in-out; }
+        
+        /* Click trap */
+        .master-trap { position: absolute; inset: 0; z-index: 50; cursor: pointer; }
     </style>
 </head>
-<body>
+<body class="antialiased pb-20">
 
-<div class="p-4 border-b border-gray-800 flex justify-between items-center">
-    <h1 class="text-xl font-black italic tracking-tighter">VIP<span class="text-rose-600">CAM</span></h1>
-    <div class="flex items-center gap-2">
-        <span class="live-badge animate-pulse">LIVE NOW</span>
-        <span class="text-xs text-gray-400">12,402 Viewers</span>
-    </div>
-</div>
-
-<div class="max-w-6xl mx-auto p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 mt-4">
-    
-    <div class="lg:col-span-2">
-        <div class="cam-frame aspect-video relative">
-            <iframe id="camPlayer" src="" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div class="mt-6 p-6 glass rounded-xl">
-            <h2 class="text-2xl font-bold">Watch My Private Show</h2>
-            <p class="text-gray-400 mt-2">Unlock full access to my room and chat one-on-one with me. No limits, no restrictions.</p>
-            <button onclick="window.location.href='YOUR_CPA_LINK'" class="mt-4 w-full bg-rose-600 py-3 rounded-lg font-bold hover:bg-rose-500 transition">UNLOCK VIP ACCESS</button>
-        </div>
-    </div>
-
-    <div class="chat-box p-4 border border-gray-800">
-        <div id="chatFeed" class="flex flex-col">
-            </div>
-    </div>
-
-</div>
-
-<script>
-    // VIDEO LIST (Rotate korbe)
-    const videos = [
-        "https://drive.google.com/file/d/1ukOYy9zg6iNI1TdMOV98l5wbuTnEvU9D/preview",
-        "https://drive.google.com/file/d/13SzbqnfE2kgRpaE2cdNV_EJG3I0UwP8G/preview",
-        "https://drive.google.com/file/d/1t3hTzBZVNap-QgDYVPrho_0cch46Vj2k/preview",
-        "https://drive.google.com/file/d/1DljnoDdClNr7db7M_okO1j8ccuDI-hBO/preview"
-    ];
-
-    // Video rotator
-    let currentVid = 0;
-    const player = document.getElementById('camPlayer');
-    function changeVideo() {
-        player.src = videos[currentVid];
-        currentVid = (currentVid + 1) % videos.length;
-    }
-    changeVideo();
-    setInterval(changeVideo, 30000); // 30 sec por por video change hobe
-
-    // Realistic Chat Simulator
-    const chatFeed = document.getElementById('chatFeed');
-    const names = ["Mike_X", "User_99", "Alpha_Guy", "Guest_88", "Tony", "BigFan"];
-    const msgs = ["She looks stunning today!", "Hey baby, are you active?", "How to enter private?", "Just unlocked the VIP, worth it!", "Is it live?"];
-
-    function addChat() {
-        const name = names[Math.floor(Math.random() * names.length)];
-        const msg = msgs[Math.floor(Math.random() * msgs.length)];
-        const div = document.createElement('div');
-        div.className = "message text-sm";
-        div.innerHTML = `<span class="font-bold text-rose-500">${name}:</span> <span class="text-gray-300">${msg}</span>`;
-        chatFeed.appendChild(div);
-        chatFeed.scrollTop = chatFeed.scrollHeight;
+    <div class="relative w-full h-48 md:h-64 bg-gray-900 border-b border-pink-600/30">
+        <div class="absolute inset-0 bg-[url('https://raw.githubusercontent.com/mizan000321-ops/newv/main/GoWoZl9X0AA1I6V.jpg')] bg-cover bg-center opacity-30 blur-sm"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] to-transparent"></div>
         
-        // Random time between 1 to 3 seconds
-        setTimeout(addChat, Math.random() * 2000 + 1000);
-    }
-    addChat();
-</script>
+        <div class="absolute -bottom-16 left-4 md:left-12 flex items-end gap-4 z-10 w-full pr-4">
+            <div class="relative">
+                <img src="https://raw.githubusercontent.com/mizan000321-ops/newv/main/GoWoZl9X0AA1I6V.jpg" class="w-28 h-28 md:w-36 md:h-36 rounded-full border-4 border-[#0a0a0c] object-cover ring-2 ring-pink-500 z-10 relative">
+                <div class="absolute bottom-1 right-1 w-5 h-5 bg-green-500 border-2 border-[#0a0a0c] rounded-full animate-pulse z-20"></div>
+            </div>
+            <div class="pb-2 flex-1">
+                <h1 class="text-2xl md:text-4xl font-black flex items-center gap-2">
+                    Jessica_VIP <svg class="w-6 h-6 text-blue-500 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </h1>
+                <p class="text-gray-400 text-sm md:text-base">@jessica_private_room • Active Now</p>
+            </div>
+            <div class="pb-4 hidden md:flex gap-4 text-center">
+                <div><div class="font-bold text-xl">128</div><div class="text-xs text-gray-500">Posts</div></div>
+                <div><div class="font-bold text-xl">18</div><div class="text-xs text-gray-500">Videos</div></div>
+                <div><div class="font-bold text-xl text-pink-500">24.5k</div><div class="text-xs text-gray-500">Likes</div></div>
+            </div>
+        </div>
+    </div>
 
+    <div class="max-w-7xl mx-auto px-4 mt-20 space-y-8">
+        
+        <div class="glass p-4 rounded-xl flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-sm md:text-base text-gray-300">Welcome to my secret room! 😈 Create a free account to watch my live cam and unlock my private gallery.</p>
+            
+            <div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full cursor-pointer hover:bg-white/10 transition border border-pink-500/30" onclick="goToCPA()">
+                <div class="w-8 h-8 rounded-full bg-pink-600 flex items-center justify-center animate-pulse">
+                    <svg class="w-4 h-4 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="w-32 h-1 bg-gray-600 rounded relative">
+                    <div class="absolute left-0 top-0 h-full bg-pink-500 w-1/3 rounded"></div>
+                </div>
+                <span class="text-xs font-bold text-pink-400">Play Voice</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <div class="lg:col-span-2 space-y-4">
+                <div class="bg-gray-900 border border-gray-800 p-3 rounded-xl">
+                    <div class="flex justify-between text-xs font-bold mb-1">
+                        <span class="text-pink-400">🔥 Private Show Goal</span>
+                        <span>$485 / $500</span>
+                    </div>
+                    <div class="w-full bg-black rounded-full h-2">
+                        <div class="bg-gradient-to-r from-pink-600 to-yellow-500 h-2 rounded-full" style="width: 97%"></div>
+                    </div>
+                </div>
+
+                <div class="relative rounded-2xl overflow-hidden bg-black ring-1 ring-pink-500 shadow-[0_0_20px_rgba(255,0,85,0.2)] aspect-video">
+                    <iframe src="https://drive.google.com/file/d/1eg9qondGDgK7sMykBrr04JIP6o67WZlC/preview" class="w-full h-full pointer-events-none" frameborder="0"></iframe>
+                    
+                    <div class="absolute top-3 left-3 bg-red-600 px-3 py-1 rounded text-xs font-black animate-pulse flex items-center gap-2">
+                        <div class="w-2 h-2 bg-white rounded-full"></div> LIVE CAM
+                    </div>
+
+                    <div class="master-trap" onclick="goToCPA()"></div>
+
+                    <div id="playOverlay" class="absolute inset-0 bg-black/40 flex items-center justify-center z-40 transition-opacity">
+                        <div class="w-20 h-20 bg-pink-600/80 rounded-full flex items-center justify-center backdrop-blur-sm shadow-[0_0_30px_#ff0055] animate-bounce">
+                            <svg class="w-10 h-10 text-white ml-2" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="goToCPA()" class="w-full btn-gradient py-4 rounded-xl font-black text-lg uppercase tracking-widest text-white mt-4 relative overflow-hidden">
+                    👉 Verify Free Account to Watch 👈
+                </button>
+            </div>
+
+            <div class="glass rounded-2xl h-[500px] flex flex-col relative overflow-hidden border-t-2 border-t-pink-500">
+                <div class="p-4 border-b border-white/5 flex justify-between items-center bg-black/50">
+                    <span class="font-bold text-sm">VIP CHAT ROOM</span>
+                    <span class="text-xs text-green-400 font-mono">1,842 Viewers</span>
+                </div>
+                <div id="chatFeed" class="flex-1 p-4 overflow-y-auto space-y-3 pb-16 flex flex-col justify-end text-sm"></div>
+                <div class="absolute bottom-0 w-full p-3 bg-gray-900 border-t border-gray-800" onclick="goToCPA()">
+                    <div class="w-full bg-black border border-gray-700 p-3 rounded-lg text-gray-500 cursor-pointer hover:border-pink-500 transition">Log in to chat...</div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-xl font-bold mb-4 flex items-center gap-2 border-b border-white/10 pb-2">
+                🔒 Exclusive Media <span class="text-xs bg-pink-600 px-2 py-1 rounded-full text-white">128 Locked</span>
+            </h3>
+            <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 md:gap-4">
+                <script>
+                    for(let i=0; i<6; i++){
+                        document.write(`
+                        <div class="relative aspect-square rounded-xl overflow-hidden bg-gray-800 cursor-pointer gallery-card" onclick="goToCPA()">
+                            <img src="https://raw.githubusercontent.com/mizan000321-ops/newv/main/GoWoZl9X0AA1I6V.jpg" class="w-full h-full object-cover blur-trap absolute inset-0">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center z-10 text-white">
+                                <svg class="w-6 h-6 mb-1 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                                <span class="text-[10px] font-bold bg-pink-600 px-2 py-0.5 rounded">VIP</span>
+                            </div>
+                        </div>`);
+                    }
+                </script>
+            </div>
+            <div class="text-center mt-6">
+                <button onclick="goToCPA()" class="px-8 py-3 rounded-full border border-pink-500 text-pink-400 font-bold hover:bg-pink-600 hover:text-white transition">Unlock Full Gallery</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="dmPopup" class="fixed bottom-4 right-4 bg-gray-900 border border-pink-500 rounded-xl p-3 shadow-2xl flex items-center gap-3 cursor-pointer shake-it z-50 transform translate-y-20 opacity-0 transition-all duration-500" onclick="goToCPA()">
+        <div class="relative">
+            <img src="https://raw.githubusercontent.com/mizan000321-ops/newv/main/GoWoZl9X0AA1I6V.jpg" class="w-12 h-12 rounded-full border border-gray-700 object-cover">
+            <div class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">1</div>
+        </div>
+        <div>
+            <div class="text-sm font-bold text-white">Jessica_VIP sent a photo!</div>
+            <div class="text-xs text-pink-400">Click to view private message</div>
+        </div>
+    </div>
+
+    <div id="exitModal" class="fixed inset-0 bg-black/90 hidden flex items-center justify-center p-4 z-[100]" onclick="goToCPA()">
+        <div class="glass max-w-sm w-full p-8 rounded-2xl text-center border-red-500 border relative overflow-hidden" onclick="event.stopPropagation(); goToCPA()">
+            <div class="absolute inset-0 bg-red-600/10 animate-pulse"></div>
+            <h2 class="text-3xl font-black text-red-500 mb-2 relative z-10">WAIT!</h2>
+            <p class="text-gray-300 mb-6 relative z-10">Do you really want to lose your spot? I am taking it off right now!</p>
+            <button class="w-full bg-red-600 py-3 rounded-lg font-bold text-white relative z-10 hover:scale-105 transition">STAY & WATCH</button>
+        </div>
+    </div>
+
+    <script>
+        const cpaLink = "https://t.taffizerq.com/click?pid=3844&offer_id=2310";
+        function goToCPA() { window.location.href = cpaLink; }
+
+        // DM Popup Entrance
+        setTimeout(() => {
+            const dm = document.getElementById('dmPopup');
+            dm.style.transform = 'translateY(0)';
+            dm.style.opacity = '1';
+        }, 4000);
+
+        // Hide Play button logic (Fake interaction)
+        document.getElementById('playOverlay').addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.getElementById('playOverlay').classList.add('hidden');
+            setTimeout(goToCPA, 1000); // Redirects shortly after they think it's playing
+        });
+
+        // Dynamic Chat
+        const chatFeed = document.getElementById('chatFeed');
+        const users = ["Mike99", "Alpha_King", "Guest441", "Tony_B", "Lonely_Guy"];
+        const msgs = ["She looks amazing", "Just signed up, it works!", "Show us more babe", "I tipped you $10!", "How do I turn on audio?"];
+        
+        function addChat() {
+            let u = users[Math.floor(Math.random()*users.length)];
+            let m = msgs[Math.floor(Math.random()*msgs.length)];
+            chatFeed.innerHTML += `<div class="bg-white/5 p-2 rounded border-l-2 border-pink-500"><span class="font-bold text-pink-300">${u}:</span> <span class="text-gray-300">${m}</span></div>`;
+            if(chatFeed.children.length > 10) chatFeed.removeChild(chatFeed.firstChild);
+            chatFeed.scrollTop = chatFeed.scrollHeight;
+            setTimeout(addChat, Math.floor(Math.random() * 2000) + 1000);
+        }
+        setTimeout(addChat, 1000);
+
+        // Exit Intent Traps
+        document.addEventListener('mouseleave', e => {
+            if(e.clientY < 0) document.getElementById('exitModal').classList.remove('hidden');
+        });
+    </script>
 </body>
 </html>
