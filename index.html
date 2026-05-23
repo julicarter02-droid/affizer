@@ -3,207 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔴 PRIVATE ROOM | Restricted Access</title>
+    <title>Jessica's VIP Room - 100% FREE ACCESS</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
-        body { background: #000; color: #fff; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+        body { background: #08080c; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
         
-        /* Premium Glow & Glass Effects */
-        .glass-panel { background: rgba(20, 20, 25, 0.85); backdrop-filter: blur(15px); border: 1px solid rgba(255, 0, 85, 0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-        .neon-btn { background: linear-gradient(45deg, #ff0055, #ff00aa); box-shadow: 0 0 25px rgba(255, 0, 85, 0.6); transition: all 0.2s ease; }
-        .neon-btn:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(255, 0, 85, 0.9); }
+        .glass-box { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; }
+        .green-glow { box-shadow: 0 0 20px rgba(34, 197, 94, 0.3); }
+        .btn-green { background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); transition: all 0.3s; }
+        .btn-green:hover { transform: scale(1.02); box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4); }
         
-        /* Animations */
-        @keyframes pulse-red { 0%, 100% { background-color: #ff0055; box-shadow: 0 0 10px #ff0055; } 50% { background-color: #550011; box-shadow: 0 0 0px #ff0055; } }
-        .live-dot { height: 12px; width: 12px; border-radius: 50%; display: inline-block; animation: pulse-red 1s infinite; }
-        @keyframes loadingBar { 0% { width: 0%; } 100% { width: 99%; } }
-        .progress-fill { animation: loadingBar 3s ease-out forwards; }
-        
-        /* Invisible Click Trap */
-        .click-trap { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 40; cursor: pointer; }
-        
-        /* Chat scrollbar hide */
-        .chat-scroll::-webkit-scrollbar { display: none; }
+        /* Progress Bar Animation */
+        @keyframes loadProgress { 0% { width: 0%; } 100% { width: 50%; } }
+        .progress-half { animation: loadProgress 1s ease-out forwards; }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased text-sm md:text-base pb-10">
 
-    <div class="bg-red-600 text-white text-center py-2 text-xs md:text-sm font-black uppercase tracking-widest flex justify-center items-center gap-2 z-50 relative">
-        <span class="live-dot"></span> BROADCASTING LIVE: DO NOT REFRESH THE PAGE
+    <div class="bg-green-600/20 border-b border-green-500/30 text-green-400 text-center py-2 text-xs font-bold flex justify-center items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+        100% SECURE CONNECTION • NO HIDDEN FEES • ALWAYS FREE
     </div>
 
-    <div class="max-w-7xl mx-auto p-4 mt-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="max-w-4xl mx-auto px-4 mt-8 space-y-6">
         
-        <div class="lg:col-span-2 space-y-6">
-            
-            <div class="relative rounded-2xl overflow-hidden glass-panel aspect-video ring-2 ring-red-600/50" id="videoWrapper">
-                <iframe src="https://drive.google.com/file/d/1eg9qondGDgK7sMykBrr04JIP6o67WZlC/preview" class="w-full h-full pointer-events-none" frameborder="0"></iframe>
-                
-                <div id="loadingOverlay" class="absolute inset-0 bg-black/90 flex flex-col items-center justify-center z-30 transition-opacity duration-500">
-                    <img src="https://raw.githubusercontent.com/mizan000321-ops/newv/main/GoWoZl9X0AA1I6V.jpg" class="w-20 h-20 rounded-full mb-4 border-2 border-pink-500 animate-pulse" alt="Host">
-                    <h2 class="text-2xl font-bold text-pink-500 mb-2">Connecting to Private Cam...</h2>
-                    <div class="w-2/3 bg-gray-800 rounded-full h-4 mb-2 overflow-hidden border border-white/20">
-                        <div class="bg-gradient-to-r from-pink-500 to-red-500 h-full progress-fill rounded-full"></div>
-                    </div>
-                    <p class="text-sm text-gray-400 font-mono" id="loadText">Establishing secure connection...</p>
-                </div>
-
-                <div class="click-trap" onclick="goToCPA()"></div>
-
-                <div class="absolute top-4 left-4 z-20 bg-red-600 px-3 py-1 rounded-md text-xs font-bold flex items-center gap-2 shadow-[0_0_10px_red]">
-                    <span class="live-dot" style="background:#fff;"></span> LIVE
-                </div>
-                <div class="absolute top-4 right-4 z-20 bg-black/60 backdrop-blur px-3 py-1 rounded-md text-xs font-bold text-green-400 border border-green-400/30">
-                    👁 <span id="viewers">4,812</span> Watching
-                </div>
+        <div class="flex items-center gap-4 mb-8">
+            <div class="relative">
+                <img src="https://raw.githubusercontent.com/mizan000321-ops/newv/main/GoWoZl9X0AA1I6V.jpg" class="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-pink-500 object-cover">
+                <div class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-[#08080c] rounded-full animate-pulse"></div>
             </div>
-
-            <div class="glass-panel p-6 rounded-2xl text-center relative overflow-hidden">
-                <div class="absolute -inset-1 bg-gradient-to-r from-pink-600 to-purple-600 opacity-20 blur-xl"></div>
-                <h3 class="text-2xl font-black mb-4 uppercase relative z-10 text-white">🔥 Age Verification Required 🔥</h3>
-                <p class="text-gray-300 mb-6 relative z-10">You must be 18+ to enter this private broadcast. Create a 100% FREE account to verify your identity and instantly unblock the live cam.</p>
-                <button onclick="goToCPA()" class="w-full neon-btn text-white py-5 rounded-xl font-black text-xl uppercase tracking-wider relative z-10 animate-bounce">
-                    👉 CREATE FREE ACCOUNT TO WATCH 👈
-                </button>
-                <div class="flex justify-center gap-4 mt-6 text-gray-500 text-xs font-bold relative z-10">
-                    <span>🔒 256-bit SSL Secure</span>
-                    <span>✔️ 100% Free VIP</span>
-                    <span>🔞 18+ Only</span>
+            <div>
+                <h1 class="text-2xl md:text-3xl font-extrabold flex items-center gap-2">
+                    Jessica_VIP <svg class="w-5 h-5 text-blue-500 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </h1>
+                <p class="text-gray-400 text-sm">Waiting to start the private broadcast...</p>
+                <div class="flex gap-2 mt-2">
+                    <span class="bg-gray-800 text-xs px-2 py-1 rounded font-bold text-gray-300">18+ Only</span>
+                    <span class="bg-green-900/40 text-green-400 text-xs px-2 py-1 rounded font-bold border border-green-500/30">Free Access</span>
                 </div>
             </div>
         </div>
 
-        <div class="glass-panel rounded-2xl h-[600px] flex flex-col relative overflow-hidden border-t-4 border-t-pink-500">
-            <div class="p-4 bg-black/40 border-b border-white/10 flex justify-between items-center z-10">
-                <div class="font-black text-lg text-pink-500">VIP ROOM CHAT</div>
-                <div class="text-xs bg-pink-500/20 text-pink-300 px-2 py-1 rounded">Slow Mode: OFF</div>
+        <div class="glass-box p-5 md:p-6 border-l-4 border-l-green-500 relative overflow-hidden">
+            <div class="absolute right-0 top-0 opacity-10 pointer-events-none">
+                <svg class="w-32 h-32 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
             </div>
+            <h2 class="text-xl font-bold mb-2 text-white">How we keep this room 100% FREE 👇</h2>
+            <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-4">
+                To protect my privacy from bots and keep this stream completely free for real fans, we use a <b>sponsor verification system</b>. 
+                <br><br>
+                When you click verify, you might see some sponsor ads or offers. <b>Don't worry!</b> Just follow the instructions, skip the ads, or complete a quick free offer to prove you are human. <span class="text-green-400 font-bold">You will NEVER be asked to pay or enter credit card details.</span>
+            </p>
+            <div class="flex flex-wrap gap-4 text-xs font-bold text-gray-400">
+                <div class="flex items-center gap-1"><span class="text-green-500">✔️</span> No Credit Card</div>
+                <div class="flex items-center gap-1"><span class="text-green-500">✔️</span> Takes 1 Minute</div>
+                <div class="flex items-center gap-1"><span class="text-green-500">✔️</span> 100% Safe & Secure</div>
+            </div>
+        </div>
+
+        <div class="relative rounded-2xl overflow-hidden glass-box ring-1 ring-gray-700 aspect-video shadow-2xl group cursor-pointer" onclick="showBridgeModal()">
+            <iframe src="https://drive.google.com/file/d/1eg9qondGDgK7sMykBrr04JIP6o67WZlC/preview" class="w-full h-full pointer-events-none filter blur-[2px] brightness-75" frameborder="0"></iframe>
             
-            <div id="waterfallChat" class="flex-1 p-4 overflow-y-auto space-y-3 chat-scroll z-10 flex flex-col justify-end pb-20">
-                </div>
-
-            <div class="absolute bottom-16 left-4 z-10 text-xs text-pink-400 font-bold italic animate-pulse">
-                Host & 12 others are typing...
+            <div class="absolute inset-0 flex flex-col items-center justify-center z-10 bg-black/40 group-hover:bg-black/50 transition duration-300">
+                <div class="bg-red-600 px-4 py-1 rounded-full text-xs font-black animate-pulse mb-4 tracking-widest">LIVE BROADCAST PAUSED</div>
+                <button class="btn-green text-white px-8 py-3 rounded-full font-bold text-lg shadow-[0_0_20px_#22c55e] flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    VERIFY FOR FREE TO WATCH
+                </button>
+                <p class="text-xs text-gray-300 mt-3 font-bold">Step 1 of 2: Pending Human Verification</p>
             </div>
+        </div>
 
-            <div class="absolute bottom-0 w-full p-4 bg-black/80 backdrop-blur z-20 border-t border-white/10">
-                <div onclick="goToCPA()" class="w-full bg-gray-900 p-3 rounded-lg border border-gray-700 text-gray-500 text-sm cursor-pointer hover:border-pink-500 transition">
-                    You must verify your account to chat...
+        <div class="glass-box p-4">
+            <div class="flex justify-between items-center border-b border-gray-700 pb-2 mb-4">
+                <span class="font-bold text-sm text-gray-300">Live Member Chat</span>
+                <span class="text-xs text-green-500 font-mono flex items-center gap-1"><span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> 842 Online</span>
+            </div>
+            <div id="trustChat" class="space-y-3 h-48 overflow-y-auto pr-2 text-sm">
+                </div>
+            <div class="mt-4 pt-3 border-t border-gray-700 cursor-pointer" onclick="showBridgeModal()">
+                <div class="bg-[#08080c] p-3 rounded text-gray-500 text-center text-xs font-bold border border-gray-800 hover:border-gray-600 transition">
+                    Create your free account to join the chat...
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="exitModal" class="fixed inset-0 bg-black/95 hidden flex-col items-center justify-center p-4 z-[100] backdrop-blur-sm">
-        <div class="max-w-md text-center bg-gray-900 p-8 rounded-3xl border-2 border-red-600 shadow-[0_0_50px_rgba(255,0,0,0.4)]">
-            <h2 class="text-5xl font-black text-red-600 mb-4 uppercase animate-pulse">WARNING!</h2>
-            <p class="text-xl font-bold mb-6">Are you really leaving?</p>
-            <p class="text-gray-400 mb-8">If you close this page, your IP address will be permanently banned from joining my private rooms forever.</p>
-            <button onclick="goToCPA()" class="w-full bg-green-500 text-black py-4 rounded-xl font-black text-lg uppercase hover:bg-green-400 transition transform hover:scale-105">
-                NO, I WANT TO JOIN!
-            </button>
-            <button onclick="document.getElementById('exitModal').classList.add('hidden')" class="mt-4 text-gray-500 underline text-sm">
-                Yes, ban me forever.
-            </button>
+    <div id="bridgeModal" class="fixed inset-0 bg-black/90 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-[#11111a] max-w-md w-full rounded-2xl border border-gray-700 shadow-2xl overflow-hidden relative transform scale-95 transition-transform duration-300" id="modalContent">
+            
+            <div class="w-full bg-gray-800 h-2">
+                <div class="bg-green-500 h-2 progress-half"></div>
+            </div>
+            
+            <div class="p-6 md:p-8">
+                <div class="w-16 h-16 bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                </div>
+                
+                <h2 class="text-2xl font-extrabold text-center text-white mb-2">You're almost in!</h2>
+                <p class="text-center text-gray-400 text-sm mb-6">Complete the final free step to unlock the VIP room.</p>
+                
+                <div class="bg-gray-800/50 p-4 rounded-xl mb-6 space-y-3">
+                    <div class="flex gap-3 items-start">
+                        <div class="bg-gray-700 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</div>
+                        <p class="text-sm text-gray-300">Click the continue button below.</p>
+                    </div>
+                    <div class="flex gap-3 items-start">
+                        <div class="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</div>
+                        <p class="text-sm text-white font-semibold">Our sponsor page will load. Simply skip the ads or complete a quick free offer to verify you are human.</p>
+                    </div>
+                    <div class="flex gap-3 items-start">
+                        <div class="bg-gray-700 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</div>
+                        <p class="text-sm text-gray-300">Once verified, your live stream will start automatically!</p>
+                    </div>
+                </div>
+
+                <button onclick="goToCPA()" class="w-full btn-green text-white py-4 rounded-xl font-bold text-lg shadow-lg flex justify-center items-center gap-2">
+                    CONTINUE TO FREE SIGNUP <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+                <div class="text-center mt-4">
+                    <button onclick="closeBridgeModal()" class="text-gray-500 text-sm hover:text-gray-300 transition underline">Cancel and leave page</button>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
+        // CPA SMARTLINK
         const cpaLink = "https://t.taffizerq.com/click?pid=3844&offer_id=2310";
         function goToCPA() { window.location.href = cpaLink; }
 
-        // --- 99% Loading Trap Logic ---
-        setTimeout(() => {
-            const loadText = document.getElementById('loadText');
-            loadText.innerHTML = "<span class='text-red-500 font-bold'>ERROR: Human Verification Required!</span>";
+        // Modal Logic
+        const modal = document.getElementById('bridgeModal');
+        const modalContent = document.getElementById('modalContent');
+
+        function showBridgeModal() {
+            modal.classList.remove('hidden');
             setTimeout(() => {
-                document.getElementById('loadingOverlay').innerHTML = `
-                    <div class="text-center p-6 bg-black/80 rounded-xl border border-red-500 animate-pulse">
-                        <h2 class="text-2xl font-black text-red-500 mb-2">VERIFICATION REQUIRED</h2>
-                        <p class="mb-4 text-sm">Click anywhere to complete 100% FREE verification.</p>
-                        <button class="bg-red-600 px-6 py-2 rounded font-bold">VERIFY NOW</button>
-                    </div>
-                `;
-            }, 1000);
-        }, 3000);
-
-        // --- Viewer Count Fluctuation ---
-        setInterval(() => {
-            let el = document.getElementById('viewers');
-            let base = 4800;
-            let current = parseInt(el.innerText.replace(',',''));
-            let next = current + Math.floor(Math.random() * 50) - 20;
-            if(next < base) next = base + 10;
-            el.innerText = next.toLocaleString();
-        }, 2000);
-
-        // --- Waterfall Continuous Chat Generator ---
-        const chatFeed = document.getElementById('waterfallChat');
-        const usernames = ["AlphaWolf", "Daddy_99", "User4091", "BigMike", "Guest_VIP", "John_NYC", "Chris_Hot", "LonelyGuy"];
-        const messages = [
-            "She is taking it off! 😍", 
-            "Just verified! Worth the 1 minute signup! 🔥", 
-            "Oh my god... wow.", 
-            "How do I turn on the sound??", 
-            "Can you see my tip babe?", 
-            "The quality is insane in the private room.", 
-            "Skipped the ad, I'm finally in!", 
-            "Show more pls 💦"
-        ];
-        const colors = ["text-blue-400", "text-green-400", "text-purple-400", "text-yellow-400", "text-pink-400"];
-
-        function fireChatMessage() {
-            let user = usernames[Math.floor(Math.random() * usernames.length)];
-            let msg = messages[Math.floor(Math.random() * messages.length)];
-            let color = colors[Math.floor(Math.random() * colors.length)];
-            
-            let chatDiv = document.createElement('div');
-            chatDiv.className = "text-sm bg-white/5 p-2 rounded-lg border-l-2 border-pink-500 shadow-sm animate-fade-in-up";
-            chatDiv.innerHTML = `<span class="font-bold ${color}">${user}:</span> <span class="text-gray-200">${msg}</span>`;
-            
-            chatFeed.appendChild(chatDiv);
-            
-            // Keep only last 20 messages to prevent lag
-            if(chatFeed.children.length > 20) {
-                chatFeed.removeChild(chatFeed.firstChild);
-            }
-            
-            chatFeed.scrollTop = chatFeed.scrollHeight;
-            
-            // Random rapid interval (300ms to 1.5s) to simulate hyper-activity
-            setTimeout(fireChatMessage, Math.floor(Math.random() * 1200) + 300);
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
         }
-        
-        // Start Chat
-        setTimeout(fireChatMessage, 1000);
-        setTimeout(fireChatMessage, 1500);
 
-        // --- Exit Intent Trap ---
-        let exitTriggered = false;
-        document.addEventListener('mouseleave', (e) => {
-            if (e.clientY < 0 && !exitTriggered) {
-                document.getElementById('exitModal').classList.remove('hidden');
-                document.getElementById('exitModal').style.display = 'flex';
-                exitTriggered = true;
-            }
-        });
-        
-        // Mobile fallback for Exit Intent (Trigger on fast scroll up)
-        let lastScrollY = window.scrollY;
-        window.addEventListener('scroll', () => {
-            if (lastScrollY - window.scrollY > 150 && !exitTriggered) {
-                document.getElementById('exitModal').classList.remove('hidden');
-                document.getElementById('exitModal').style.display = 'flex';
-                exitTriggered = true;
-            }
-            lastScrollY = window.scrollY;
-        });
+        function closeBridgeModal() {
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
 
+        // Trust Chat Logic (Targeted specifically to address the fear of Ads/Payments)
+        const chatFeed = document.getElementById('trustChat');
+        const chatData = [
+            { user: "Mike_T", msg: "Is this actually free?", color: "text-blue-400" },
+            { user: "Sarah_VIP", msg: "Yeah! There are a few sponsor ads on the next page, just skip them or put your email. Totally free.", color: "text-pink-400" },
+            { user: "David99", msg: "Ah okay, I just verified. It took me 1 min. Her cam is crazy 💦", color: "text-green-400" },
+            { user: "Guest_841", msg: "I didn't have to enter any card info, legit site guys.", color: "text-yellow-400" },
+            { user: "ChrisKing", msg: "Wow the HD quality in the private room is so much better.", color: "text-purple-400" }
+        ];
+
+        let msgIndex = 0;
+        function loadTrustMessages() {
+            if (msgIndex < chatData.length) {
+                let data = chatData[msgIndex];
+                let div = document.createElement('div');
+                div.className = "bg-white/5 p-2.5 rounded-lg border-l-2 border-green-500 opacity-0 transform translate-y-2 transition duration-500";
+                div.innerHTML = `<span class="font-bold ${data.color}">${data.user}:</span> <span class="text-gray-300">${data.msg}</span>`;
+                
+                chatFeed.appendChild(div);
+                
+                // Trigger animation
+                setTimeout(() => {
+                    div.classList.remove('opacity-0', 'translate-y-2');
+                }, 50);
+
+                chatFeed.scrollTop = chatFeed.scrollHeight;
+                msgIndex++;
+                
+                // Timing between messages
+                let delay = msgIndex === 1 ? 2000 : (Math.random() * 3000 + 1500);
+                setTimeout(loadTrustMessages, delay);
+            } else {
+                // Loop messages slowly to keep it alive
+                msgIndex = 0;
+                setTimeout(() => { chatFeed.innerHTML = ''; loadTrustMessages(); }, 15000);
+            }
+        }
+        setTimeout(loadTrustMessages, 1000);
     </script>
-    <style>
-        .animate-fade-in-up { animation: fadeInUp 0.3s ease-out forwards; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    </style>
 </body>
 </html>
