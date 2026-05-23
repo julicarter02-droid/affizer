@@ -3,30 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jessica's VIP Profile | LIVE NOW</title>
+    <title>Jessica's VIP Space | Exclusive Content</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800;900&display=swap');
         body { background: #0a0a0c; color: #fff; font-family: 'Outfit', sans-serif; overflow-x: hidden; }
         
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .pink-glow { text-shadow: 0 0 15px #ff0055; }
-        .btn-gradient { background: linear-gradient(90deg, #ff0055 0%, #ff00aa 100%); box-shadow: 0 5px 25px rgba(255,0,85,0.4); }
+        .btn-gradient { background: linear-gradient(90deg, #ff0055 0%, #ff00aa 100%); box-shadow: 0 5px 25px rgba(255,0,85,0.4); transition: all 0.3s ease; }
         .btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 8px 35px rgba(255,0,85,0.7); }
         
-        /* Blurry Image Trap */
-        .blur-trap { filter: blur(12px) brightness(0.6); transition: all 0.3s; }
-        .gallery-card:hover .blur-trap { filter: blur(8px) brightness(0.8); }
-        
-        /* Shaking Animation */
-        @keyframes shake { 0%, 100% {transform: translateX(0);} 10%, 30%, 50%, 70%, 90% {transform: translateX(-3px);} 20%, 40%, 60%, 80% {transform: translateX(3px);} }
-        .shake-it { animation: shake 2s infinite ease-in-out; }
-        
-        /* Click trap */
-        .master-trap { position: absolute; inset: 0; z-index: 50; cursor: pointer; }
-
-        /* Premium Spin Wheel Structure */
-        .wheel-container { position: relative; width: 300px; height: 300px; margin: 0 auto; }
+        /* Fixed Spin Wheel Structure */
+        .wheel-container { position: relative; width: 280px; height: 280px; margin: 0 auto; }
         .wheel { 
             width: 100%; height: 100%; border-radius: 50%; border: 6px solid #ff0055; 
             box-shadow: 0 0 35px rgba(255, 0, 85, 0.7); 
@@ -36,313 +24,104 @@
                 #ff00aa 120deg 180deg, #0d0d11 180deg 240deg, 
                 #ff0055 240deg 300deg, #16161a 300deg 360deg
             );
-            transition: transform 5s cubic-bezier(0.15, 0.75, 0.1, 1); transform: rotate(0deg); 
         }
-        /* Wheel Text Styling */
+        /* Fixed Wheel Text Alignment */
         .wheel-label {
             position: absolute; top: 50%; left: 50%;
-            transform-origin: 0 0; width: 120px; text-align: right;
+            transform-origin: 0 0; width: 140px; text-align: center;
             font-size: 11px; font-weight: 900; color: #fff; text-transform: uppercase;
-            letter-spacing: 0.5px; text-shadow: 0 2px 5px rgba(0,0,0,0.9);
+            margin-top: -6px; /* perfectly centers the text vertically */
+            padding-left: 40px; /* pushes text outward */
         }
         .wheel-center { 
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
             width: 60px; height: 60px; background: #0a0a0c; border: 3px solid #fff; 
-            border-radius: 50%; z-index: 10; display: flex; align-items: center; 
-            justify-content: center; font-weight: 900; font-size: 13px; color: white; 
-            box-shadow: inset 0 0 10px #ff0055, 0 0 20px rgba(255,0,85,0.6); 
+            border-radius: 50%; z-index: 10; display: flex; align-items: center; justify-content: center; 
+            font-weight: 900; font-size: 13px; color: white; box-shadow: inset 0 0 10px #ff0055; 
         }
         .wheel-pointer { 
             position: absolute; top: -15px; left: 50%; transform: translateX(-50%); 
             width: 0; height: 0; border-left: 20px solid transparent; 
-            border-right: 20px solid transparent; border-top: 32px solid white; 
-            z-index: 20; filter: drop-shadow(0 0 10px rgba(255,0,85,1)); 
+            border-right: 20px solid transparent; border-top: 32px solid white; z-index: 20; 
         }
-        @keyframes pulse-fast { 0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(255,0,85,0.4); } 50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(255,0,85,0.8); } }
-        .btn-pulse { animation: pulse-fast 1.4s infinite; }
     </style>
 </head>
 <body class="antialiased pb-20">
 
-    <div class="bg-red-600/90 text-white text-center py-2 px-4 text-xs md:text-sm font-black tracking-wide border-b border-red-500 shadow-lg relative z-30">
-        🔥 WARNING: ONLY <span id="liveSpots" class="bg-white text-red-600 px-2 py-0.5 rounded font-mono animate-pulse">7</span> FREE VIP PASSES LEFT FOR TODAY!
-    </div>
-
     <div class="relative w-full h-48 md:h-64 bg-gray-900 border-b border-pink-600/30">
-        <div class="absolute inset-0 bg-[url('https://raw.githubusercontent.com/mizan000321-ops/newv/main/GoWoZl9X0AA1I6V.jpg')] bg-cover bg-center opacity-30 blur-sm"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] to-transparent"></div>
-        
         <div class="absolute -bottom-16 left-4 md:left-12 flex items-end gap-4 z-10 w-full pr-4">
             <div class="relative">
-                <img src="https://raw.githubusercontent.com/mizan000321-ops/newv/main/GoWoZl9X0AA1I6V.jpg" class="w-28 h-28 md:w-36 md:h-36 rounded-full border-4 border-[#0a0a0c] object-cover ring-2 ring-pink-500 z-10 relative">
-                <div class="absolute bottom-1 right-1 w-5 h-5 bg-green-500 border-2 border-[#0a0a0c] rounded-full animate-pulse z-20"></div>
+                <div class="w-28 h-28 md:w-36 md:h-36 rounded-full border-4 border-[#0a0a0c] bg-gray-800 ring-2 ring-pink-500 z-10 flex items-center justify-center text-xs">Profile Pic</div>
             </div>
             <div class="pb-2 flex-1">
-                <h1 class="text-2xl md:text-4xl font-black flex items-center gap-2">
-                    Jessica_VIP <svg class="w-6 h-6 text-blue-500 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                </h1>
-                <p class="text-gray-400 text-sm md:text-base">@jessica_private_room • Active Now</p>
-            </div>
-            <div class="pb-4 hidden md:flex gap-4 text-center">
-                <div><div class="font-bold text-xl">128</div><div class="text-xs text-gray-500">Posts</div></div>
-                <div><div class="font-bold text-xl">18</div><div class="text-xs text-gray-500">Videos</div></div>
-                <div><div class="font-bold text-xl text-pink-500">24.5k</div><div class="text-xs text-gray-500">Likes</div></div>
+                <h1 class="text-2xl md:text-4xl font-black flex items-center gap-2">Jessica_VIP</h1>
+                <p class="text-gray-400 text-sm">Exclusive Content Creator</p>
             </div>
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 mt-20 space-y-8">
+    <div class="max-w-5xl mx-auto px-4 mt-24 space-y-8">
         
-        <div class="glass p-4 rounded-xl flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-sm md:text-base text-gray-300">Welcome to my secret room! 😈 Create a free account to watch my live cam and unlock my private gallery.</p>
-            
-            <div class="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full cursor-pointer hover:bg-white/10 transition border border-pink-500/30" onclick="goToCPA()">
-                <div class="w-8 h-8 rounded-full bg-pink-600 flex items-center justify-center animate-pulse">
-                    <svg class="w-4 h-4 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-                <div class="w-32 h-1 bg-gray-600 rounded relative">
-                    <div class="absolute left-0 top-0 h-full bg-pink-500 w-1/3 rounded"></div>
-                </div>
-                <span class="text-xs font-bold text-pink-400">Play Voice</span>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            
-            <div class="lg:col-span-2 space-y-4">
-                <div class="bg-gray-900 border border-gray-800 p-3 rounded-xl">
-                    <div class="flex justify-between text-xs font-bold mb-1">
-                        <span class="text-pink-400">🔥 Private Show Goal</span>
-                        <span>$485 / $500</span>
-                    </div>
-                    <div class="w-full bg-black rounded-full h-2">
-                        <div class="bg-gradient-to-r from-pink-600 to-yellow-500 h-2 rounded-full" style="width: 97%"></div>
-                    </div>
-                </div>
-
-                <div class="relative rounded-2xl overflow-hidden bg-black ring-1 ring-pink-500 shadow-[0_0_20px_rgba(255,0,85,0.2)] aspect-video">
-                    <iframe src="https://drive.google.com/file/d/1eg9qondGDgK7sMykBrr04JIP6o67WZlC/preview" class="w-full h-full pointer-events-none" frameborder="0"></iframe>
-                    
-                    <div class="absolute top-3 left-3 bg-red-600 px-3 py-1 rounded text-xs font-black animate-pulse flex items-center gap-2">
-                        <div class="w-2 h-2 bg-white rounded-full"></div> LIVE CAM
-                    </div>
-
-                    <div class="master-trap" onclick="goToCPA()"></div>
-
-                    <div id="playOverlay" class="absolute inset-0 bg-black/40 flex items-center justify-center z-40 transition-opacity">
-                        <div class="w-20 h-20 bg-pink-600/80 rounded-full flex items-center justify-center backdrop-blur-sm shadow-[0_0_30px_#ff0055] animate-bounce">
-                            <svg class="w-10 h-10 text-white ml-2" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                    </div>
-                </div>
-
-                <button onclick="goToCPA()" class="w-full btn-gradient py-4 rounded-xl font-black text-lg uppercase tracking-widest text-white mt-4 relative overflow-hidden">
-                    👉 Verify Free Account to Watch 👈
-                </button>
-            </div>
-
-            <div class="glass rounded-2xl h-[500px] flex flex-col relative overflow-hidden border-t-2 border-t-pink-500">
-                <div class="p-4 border-b border-white/5 flex justify-between items-center bg-black/50">
-                    <span class="font-bold text-sm">VIP CHAT ROOM</span>
-                    <span class="text-xs text-green-400 font-mono">1,842 Viewers</span>
-                </div>
-                <div id="chatFeed" class="flex-1 p-4 overflow-y-auto space-y-3 pb-16 flex flex-col justify-end text-sm"></div>
-                <div class="absolute bottom-0 w-full p-3 bg-gray-900 border-t border-gray-800" onclick="goToCPA()">
-                    <div class="w-full bg-black border border-gray-700 p-3 rounded-lg text-gray-500 cursor-pointer hover:border-pink-500 transition">Log in to chat...</div>
-                </div>
-            </div>
+        <div class="glass p-6 rounded-xl text-center space-y-4 border-t-2 border-t-pink-500">
+            <h2 class="text-2xl font-bold text-white">Unlock My Premium Content 💎</h2>
+            <p class="text-gray-300">Create a free account to unlock my full video gallery and private photos.</p>
+            <button onclick="goToCPA()" class="btn-gradient py-4 px-10 rounded-full font-black text-lg uppercase tracking-widest text-white mt-4">
+                👉 Verify to Unlock Everything
+            </button>
         </div>
 
         <div>
             <h3 class="text-xl font-bold mb-4 flex items-center gap-2 border-b border-white/10 pb-2">
-                🔒 Exclusive Media <span class="text-xs bg-pink-600 px-2 py-1 rounded-full text-white">128 Locked</span>
+                🎥 Free Video Previews
             </h3>
-            <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 md:gap-4">
-                <script>
-                    for(let i=0; i<6; i++){
-                        document.write(`
-                        <div class="relative aspect-square rounded-xl overflow-hidden bg-gray-800 cursor-pointer gallery-card" onclick="goToCPA()">
-                            <img src="https://raw.githubusercontent.com/mizan000321-ops/newv/main/GoWoZl9X0AA1I6V.jpg" class="w-full h-full object-cover blur-trap absolute inset-0">
-                            <div class="absolute inset-0 flex flex-col items-center justify-center z-10 text-white">
-                                <svg class="w-6 h-6 mb-1 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                                <span class="text-[10px] font-bold bg-pink-600 px-2 py-0.5 rounded">VIP</span>
-                            </div>
-                        </div>`);
-                    }
-                </script>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="rounded-xl overflow-hidden bg-black ring-1 ring-pink-500/50 aspect-video relative">
+                    <iframe src="https://drive.google.com/file/d/1ukOYy9zg6iNI1TdMOV98l5wbuTnEvU9D/preview" class="w-full h-full" frameborder="0" allow="autoplay"></iframe>
+                </div>
+                <div class="rounded-xl overflow-hidden bg-black ring-1 ring-pink-500/50 aspect-video relative">
+                    <iframe src="https://drive.google.com/file/d/13SzbqnfE2kgRpaE2cdNV_EJG3I0UwP8G/preview" class="w-full h-full" frameborder="0" allow="autoplay"></iframe>
+                </div>
+                <div class="rounded-xl overflow-hidden bg-black ring-1 ring-pink-500/50 aspect-video relative">
+                    <iframe src="https://drive.google.com/file/d/1t3hTzBZVNap-QgDYVPrho_0cch46Vj2k/preview" class="w-full h-full" frameborder="0" allow="autoplay"></iframe>
+                </div>
+                <div class="rounded-xl overflow-hidden bg-black ring-1 ring-pink-500/50 aspect-video relative">
+                    <iframe src="https://drive.google.com/file/d/1DljnoDdClNr7db7M_okO1j8ccuDI-hBO/preview" class="w-full h-full" frameborder="0" allow="autoplay"></iframe>
+                </div>
             </div>
             <div class="text-center mt-6">
-                <button onclick="goToCPA()" class="px-8 py-3 rounded-full border border-pink-500 text-pink-400 font-bold hover:bg-pink-600 hover:text-white transition">Unlock Full Gallery</button>
+                <button onclick="goToCPA()" class="px-8 py-3 rounded-full border border-pink-500 text-pink-400 font-bold hover:bg-pink-600 hover:text-white transition">Unlock Full HD Gallery</button>
             </div>
         </div>
-    </div>
 
-    <div class="fixed bottom-24 left-4 z-40">
-        <button onclick="openWheelModal()" class="bg-gradient-to-r from-pink-600 to-purple-600 text-white font-black px-5 py-3 rounded-full border-2 border-white btn-pulse flex items-center gap-2 text-sm shadow-2xl">
-            🎁 SPIN & WIN VIP
-        </button>
-    </div>
-
-    <div id="wheelModal" class="fixed inset-0 bg-black/95 hidden flex flex-col items-center justify-center p-4 z-[110] backdrop-blur-md">
-        
-        <div id="wheelStep" class="w-full max-w-md text-center bg-gray-900/60 p-6 rounded-2xl border border-white/5 glass">
-            <h2 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-pink-600 mb-2">LUCKY SPIN!</h2>
-            <p class="text-gray-300 mb-6 text-xs md:text-sm">Spin the lucky wheel to win <b class="text-white">Free Lifetime VIP Access</b> instantly.</p>
+        <div class="glass p-8 rounded-2xl text-center border border-white/5 mt-10">
+            <h2 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-pink-600 mb-2">LUCKY SPIN</h2>
+            <p class="text-gray-300 mb-8 text-sm">Spin the wheel for a chance to win exclusive content access.</p>
             
-            <div class="wheel-container mb-6">
+            <div class="wheel-container mb-8">
                 <div class="wheel-pointer"></div>
-                <div class="wheel" id="spinWheel">
-                    <div class="wheel-label" style="transform: translate(-50%, -50%) rotate(30deg) translate(50px); shadow: 2px 2px 5px black;">Free Pics</div>
-                    <div class="wheel-label" style="transform: translate(-50%, -50%) rotate(90deg) translate(50px);">Try Again</div>
-                    <div class="wheel-label" style="transform: translate(-50%, -50%) rotate(150deg) translate(50px);">Live Cam</div>
-                    <div class="wheel-label" style="transform: translate(-50%, -50%) rotate(210deg) translate(50px);">Jackpot 🔞</div>
-                    <div class="wheel-label" style="transform: translate(-50%, -50%) rotate(270deg) translate(50px); color: #fff; font-size: 12px;">LIFETIME VIP</div>
-                    <div class="wheel-label" style="transform: translate(-50%, -50%) rotate(330deg) translate(50px);">No Luck</div>
+                <div class="wheel">
+                    <div class="wheel-label" style="transform: rotate(30deg);">Free Pics</div>
+                    <div class="wheel-label" style="transform: rotate(90deg);">Try Again</div>
+                    <div class="wheel-label" style="transform: rotate(150deg);">Live Cam</div>
+                    <div class="wheel-label" style="transform: rotate(210deg);">Jackpot</div>
+                    <div class="wheel-label" style="transform: rotate(270deg);">VIP Pass</div>
+                    <div class="wheel-label" style="transform: rotate(330deg);">No Luck</div>
                 </div>
                 <div class="wheel-center">SPIN</div>
             </div>
             
-            <button id="spinBtn" onclick="spinNow()" class="w-full btn-gradient py-4 rounded-xl font-black text-xl uppercase tracking-widest text-white transition hover:scale-105">
-                CLICK TO SPIN ⚡
+            <button onclick="goToCPA()" class="w-full md:w-1/2 mx-auto btn-gradient py-4 rounded-xl font-black text-xl uppercase tracking-widest text-white transition hover:scale-105">
+                VERIFY TO SPIN ⚡
             </button>
-            <p class="text-[10px] text-gray-500 mt-3">Only 1 free spin allowed per visitor session.</p>
         </div>
 
-        <div id="winStep" class="w-full max-w-sm text-center hidden glass p-8 rounded-2xl border-2 border-pink-500 relative overflow-hidden shadow-[0_0_50px_rgba(255,0,85,0.4)]">
-            <div class="absolute inset-0 bg-pink-600/10 animate-pulse"></div>
-            <div class="text-5xl mb-4">🎉</div>
-            <h2 class="text-3xl font-black text-white mb-1 relative z-10">CONGRATULATIONS!</h2>
-            <p class="text-pink-400 font-bold mb-6 relative z-10 text-xl">You Won: Lifetime VIP Access Pass</p>
-            
-            <div class="bg-black/60 p-4 rounded-xl border border-gray-800 mb-6 relative z-10">
-                <p class="text-xs text-gray-400 mb-2 uppercase tracking-wider">Claim your unlock code before expiration:</p>
-                <p class="text-green-400 font-mono font-black text-2xl tracking-widest animate-pulse" id="countdown">03:00</p>
-            </div>
-            
-            <button onclick="goToCPA()" class="w-full bg-green-500 hover:bg-green-400 py-4 rounded-xl font-black text-xl uppercase text-black relative z-10 hover:scale-105 transition shadow-[0_4px_20px_rgba(34,197,94,0.4)] flex items-center justify-center gap-2">
-                CLAIM VIP NOW 🔓
-            </button>
-            <p class="text-[10px] text-gray-500 mt-4 relative z-10">🔒 Secured connection. Verification required.</p>
-        </div>
-    </div>
-
-    <div id="dmPopup" class="fixed bottom-4 right-4 bg-gray-900 border border-pink-500 rounded-xl p-3 shadow-2xl flex items-center gap-3 cursor-pointer shake-it z-50 transform translate-y-20 opacity-0 transition-all duration-500" onclick="goToCPA()">
-        <div class="relative">
-            <img src="https://raw.githubusercontent.com/mizan000321-ops/newv/main/GoWoZl9X0AA1I6V.jpg" class="w-12 h-12 rounded-full border border-gray-700 object-cover">
-            <div class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">1</div>
-        </div>
-        <div>
-            <div class="text-sm font-bold text-white">Jessica_VIP sent a photo!</div>
-            <div class="text-xs text-pink-400">Click to view private message</div>
-        </div>
-    </div>
-
-    <div id="exitModal" class="fixed inset-0 bg-black/90 hidden flex items-center justify-center p-4 z-[100]" onclick="goToCPA()">
-        <div class="glass max-w-sm w-full p-8 rounded-2xl text-center border-red-500 border relative overflow-hidden" onclick="event.stopPropagation(); goToCPA()">
-            <div class="absolute inset-0 bg-red-600/10 animate-pulse"></div>
-            <h2 class="text-3xl font-black text-red-500 mb-2 relative z-10">WAIT!</h2>
-            <p class="text-gray-300 mb-6 relative z-10">Do you really want to lose your spot? I am taking it off right now!</p>
-            <button class="w-full bg-red-600 py-3 rounded-lg font-bold text-white relative z-10 hover:scale-105 transition">STAY & WATCH</button>
-        </div>
     </div>
 
     <script>
+        // Your CPA link
         const cpaLink = "https://t.taffizerq.com/click?pid=3844&offer_id=2310";
         function goToCPA() { window.location.href = cpaLink; }
-
-        // Open Wheel Modal Control
-        function openWheelModal() {
-            document.getElementById('wheelModal').classList.remove('hidden');
-        }
-
-        // DELAYED TRIGGER: Automatically popup the wheel after 8 Seconds (Gives time to absorb the page content)
-        setTimeout(() => {
-            openWheelModal();
-        }, 8000);
-
-        // Live Quota/Spots Fake Counter Logic
-        let spots = 7;
-        const spotsEl = document.getElementById('liveSpots');
-        const interval = setInterval(() => {
-            if(spots <= 2) {
-                clearInterval(interval);
-                return;
-            }
-            spots--;
-            spotsEl.innerHTML = spots;
-        }, 15000); // Every 15 seconds one spot drops to create realistic fear of missing out
-
-        // Spin the Wheel Functionality
-        function spinNow() {
-            const wheel = document.getElementById('spinWheel');
-            const btn = document.getElementById('spinBtn');
-            
-            btn.disabled = true;
-            btn.innerHTML = "SPINNING... 🔄";
-            btn.classList.add('opacity-50');
-
-            // Force the wheel to rotate 4 full turns + stop precisely on "LIFETIME VIP" segment
-            const spinDegree = 1440 + 90; 
-            wheel.style.transform = `rotate(${spinDegree}deg)`;
-
-            // Smooth transition match (5 seconds)
-            setTimeout(() => {
-                document.getElementById('wheelStep').classList.add('hidden');
-                document.getElementById('winStep').classList.remove('hidden');
-                startCountdown();
-            }, 5200);
-        }
-
-        // Scarcity Countdown Timer Logic
-        function startCountdown() {
-            let time = 180; // 3 Full Minutes
-            const timerEl = document.getElementById('countdown');
-            
-            const timerInterval = setInterval(() => {
-                if(time <= 0) {
-                    clearInterval(timerInterval);
-                    return;
-                }
-                time--;
-                let m = Math.floor(time / 60);
-                let s = time % 60;
-                timerEl.innerHTML = `0${m}:${s < 10 ? '0' : ''}${s}`;
-            }, 1000);
-        }
-
-        // DM Popup Entrance
-        setTimeout(() => {
-            const dm = document.getElementById('dmPopup');
-            dm.style.transform = 'translateY(0)';
-            dm.style.opacity = '1';
-        }, 4000);
-
-        // Hide Play button logic (Fake interaction)
-        document.getElementById('playOverlay').addEventListener('click', (e) => {
-            e.stopPropagation();
-            document.getElementById('playOverlay').classList.add('hidden');
-            setTimeout(goToCPA, 1000); 
-        });
-
-        // Dynamic Simulated Live Chat
-        const chatFeed = document.getElementById('chatFeed');
-        const users = ["Mike99", "Alpha_King", "Guest441", "Tony_B", "Lonely_Guy"];
-        const msgs = ["She looks amazing", "Just signed up, it works!", "Show us more babe", "I tipped you $10!", "How do I turn on audio?"];
-        
-        function addChat() {
-            let u = users[Math.floor(Math.random()*users.length)];
-            let m = msgs[Math.floor(Math.random()*msgs.length)];
-            chatFeed.innerHTML += `<div class="bg-white/5 p-2 rounded border-l-2 border-pink-500"><span class="font-bold text-pink-300">${u}:</span> <span class="text-gray-300">${m}</span></div>`;
-            if(chatFeed.children.length > 10) chatFeed.removeChild(chatFeed.firstChild);
-            chatFeed.scrollTop = chatFeed.scrollHeight;
-            setTimeout(addChat, Math.floor(Math.random() * 2000) + 1000);
-        }
-        setTimeout(addChat, 1000);
-
-        // Exit Intent Detection
-        document.addEventListener('mouseleave', e => {
-            if(e.clientY < 0) document.getElementById('exitModal').classList.remove('hidden');
-        });
     </script>
 </body>
 </html>
